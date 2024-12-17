@@ -280,3 +280,33 @@ body {
             background-position: center;
             background-repeat: no-repeat;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .deal-poster {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .deal-poster:hover {
+            transform: scale(1.05);
+        }
+        .poster-overlay {
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .deal-poster:hover .poster-overlay {
+            opacity: 1;
+        }
