@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delicious Eats</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Animation Library -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Enhanced Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-utensils me-2"></i>Delicious Eats
+        </a>
+
+        <!-- Responsive Toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+
+            <!-- Mega Menu Dropdown -->
+            <li class="nav-item dropdown dropdown-mega-menu">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Menu
+              </a>
+              <div class="dropdown-menu">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Cuisine Types</h6>
+                      <div class="nav flex-column">
+                        <a href="#" class="mega-menu-link py-1">Italian</a>
+                        <a href="#" class="mega-menu-link py-1">Mexican</a>
+                        <a href="#" class="mega-menu-link py-1">Asian Fusion</a>
+                        <a href="#" class="mega-menu-link py-1">Vegetarian</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Special Diets</h6>
+                      <div class="nav flex-column">
+                        <a href="#" class="mega-menu-link py-1">Gluten-Free</a>
+                        <a href="#" class="mega-menu-link py-1">Vegan</a>
+                        <a href="#" class="mega-menu-link py-1">Keto</a>
+                        <a href="#" class="mega-menu-link py-1">Low-Carb</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Meal Types</h6>
+                      <div class="nav flex-column">
+                        <a href="#" class="mega-menu-link py-1">Appetizers</a>
+                        <a href="#" class="mega-menu-link py-1">Main Courses</a>
+                        <a href="#" class="mega-menu-link py-1">Desserts</a>
+                        <a href="#" class="mega-menu-link py-1">Beverages</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Promotions</h6>
+                      <div class="nav flex-column">
+                        <a href="#" class="mega-menu-link py-1"
+                          >Chef's Specials</a
+                        >
+                        <a href="#" class="mega-menu-link py-1">Weekly Deals</a>
+                        <a href="#" class="mega-menu-link py-1">Catering</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Right-side Icons -->
+          <ul class="navbar-nav">
+            <li class="nav-item cart-search">
+              <div
+                class="search-icon"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal"
+              >
+                <i class="fas fa-search"></i>
+              </div>
+              <div
+                class="cart-icon"
+                data-bs-toggle="modal"
+                data-bs-target="#cartModal"
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Search Our Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search dishes, cuisines..."
+            />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Your Cart</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Your cart is currently empty.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Continue Shopping
+            </button>
+            <button class="btn btn-primary" disabled>Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carusel  -->
+
+    <!-- Hero Carousel Section -->
+    <section id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- First Slide -->
+        <div
+          class="carousel-item active"
+          style="
+            background-image: url('https://cheezious.com/_next/image?url=http%3A%2F%2Fs3-me-south-1.amazonaws.com%2Fcz-content-prod%2Fbanners%2Fwebsite%2F1725625729436-Cheezious%20New%20Web%20Banner%2002.jpg&w=1920&q=75');
+          "
+        >
+          <div class="carousel-overlay">
+            <div class="hero-content animate__animated animate__fadeInDown">
+              <h1 class="hero-title">Culinary Delights Await</h1>
+              <p class="hero-subtitle">
+                Discover a world of exquisite flavors and unforgettable dining
+                experiences
+              </p>
+              <a href="#menu" class="btn hero-btn">Explore Menu</a>
+            </div>
+          </div>
+          <!-- Floating Food Elements -->
+          <img
+            src="https://theburgershacks.com/wp-content/uploads/2022/06/the-burger-shack.png"
+            alt="Food Item"
+            class="floating-food"
+            width="225"
+            style="top: 15%; left: 5%"
+          />
+          <img
+            src="https://www.mrcod.pk/wp-content/uploads/2023/03/Crunch-Burger-1.webp"
+            alt="Food Item"
+            class="floating-food"
+            width="225"
+            style="top: 55%; right: 8%"
+          />
+        </div>
+
+        <!-- Second Slide -->
+        <div
+          class="carousel-item"
+          style="
+            background-image: url('https://cheezious.com/_next/image?url=http%3A%2F%2Fs3-me-south-1.amazonaws.com%2Fcz-content-prod%2Fbanners%2Fwebsite%2F1725625729436-Cheezious%20New%20Web%20Banner%2002.jpg&w=1920&q=75');
+          "
+        >
+          <div class="carousel-overlay">
+            <div class="hero-content animate__animated animate__fadeInUp">
+              <h1 class="hero-title">Fresh & Seasonal Cuisine</h1>
+              <p class="hero-subtitle">
+                Locally sourced ingredients crafted into extraordinary dishes
+              </p>
+              <a href="#about" class="btn hero-btn">Our Story</a>
+            </div>
+          </div>
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/048/034/386/small_2x/fast-food-board-with-hamburger-french-fries-isolated-on-transparent-background-free-png.png"
+            alt="Food Item"
+            class="floating-food"
+            width="250"
+            style="top: 12%; right: 5%"
+          />
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/025/065/315/non_2x/fast-food-meal-with-ai-generated-free-png.png"
+            alt="Food Item"
+            class="floating-food"
+            width="250"
+            style="top: 70%; left: 7%"
+          />
+        </div>
+
+        <!-- Third Slide -->
+        <div
+          class="carousel-item"
+          style="
+            background-image: url('https://cheezious.com/_next/image?url=http%3A%2F%2Fs3-me-south-1.amazonaws.com%2Fcz-content-prod%2Fbanners%2Fwebsite%2F1731936105295-web%201520x460.jpg&w=1920&q=75');
+          "
+        >
+          <div class="carousel-overlay">
+            <div class="hero-content animate__animated animate__fadeInRight">
+              <h1 class="hero-title">Catering & Events</h1>
+              <p class="hero-subtitle">
+                Unforgettable dining experiences for every occasion
+              </p>
+              <a href="#contact" class="btn hero-btn">Book Now</a>
+            </div>
+          </div>
+          <img
+            src="https://petesfamouspizza.com/wp-content/uploads/2023/07/main-pizza.png"
+            alt="Food Item"
+            class="floating-food"
+            width="225"
+            style="top: 8%; left: 8%"
+          />
+          <img
+            src="https://png.pngtree.com/png-vector/20240715/ourmid/pngtree-vegetable-italian-slice-piece-pizza-vintage-png-image_13059928.png"
+            alt="Food Item"
+            class="floating-food"
+            width="225"
+            style="top: 62%; right: 10%"
+          />
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </section>
+
+    <!-- Bootstrap and Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Force carousel initialization
+        var carousel = document.getElementById("heroCarousel");
+        if (carousel) {
+          new bootstrap.Carousel(carousel);
+          console.log("Carousel initialized");
+        } else {
+          console.error("Carousel element not found");
+        }
+      });
+    </script>
+  </body>
+</html>
