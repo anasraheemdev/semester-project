@@ -310,3 +310,104 @@ body {
         .deal-poster:hover .poster-overlay {
             opacity: 1;
         }
+
+
+
+
+        /* footer  */
+
+
+        .footer-modern {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .animated-bg .food-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .social-icon-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon-link:hover {
+            background: var(--hover-color);
+            transform: translateY(-3px);
+            color: white;
+        }
+        
+        .footer-link {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            display: inline-block;
+            padding: 6px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffc107;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #ffc107;
+            transform: translateX(5px);
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        .newsletter-form .form-control:focus {
+            box-shadow: none;
+            border-color: #ffc107;
+        }
+        
+        .newsletter-form .btn {
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form .btn:hover {
+            transform: translateX(3px);
+        }
+        
+        .contact-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .animated-bg {
+                display: none;
+            }
+        }
+
+
+
+
+        /* footer  */
+        

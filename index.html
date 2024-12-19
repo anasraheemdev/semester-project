@@ -27,117 +27,7 @@
   </head>
   <body>
     <!-- Enhanced Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-      <div class="container">
-        <!-- Brand Logo -->
-        <a class="navbar-brand" href="#">
-          <i class="fas fa-utensils me-2"></i>Bite Burst
-        </a>
-
-        <!-- Responsive Toggle -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navigation Menu -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
-            </li>
-
-            <!-- Mega Menu Dropdown -->
-            <li class="nav-item dropdown dropdown-mega-menu">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                data-bs-toggle="dropdown"
-              >
-                Menu
-              </a>
-              <div class="dropdown-menu">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-3 mega-menu-column">
-                      <h6 class="mega-menu-title">Cuisine Types</h6>
-                      <div class="nav flex-column">
-                        <a href="#" class="mega-menu-link py-1">Italian</a>
-                        <a href="#" class="mega-menu-link py-1">Mexican</a>
-                        <a href="#" class="mega-menu-link py-1">Asian Fusion</a>
-                        <a href="#" class="mega-menu-link py-1">Vegetarian</a>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mega-menu-column">
-                      <h6 class="mega-menu-title">Special Diets</h6>
-                      <div class="nav flex-column">
-                        <a href="#" class="mega-menu-link py-1">Gluten-Free</a>
-                        <a href="#" class="mega-menu-link py-1">Vegan</a>
-                        <a href="#" class="mega-menu-link py-1">Keto</a>
-                        <a href="#" class="mega-menu-link py-1">Low-Carb</a>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mega-menu-column">
-                      <h6 class="mega-menu-title">Meal Types</h6>
-                      <div class="nav flex-column">
-                        <a href="#" class="mega-menu-link py-1">Appetizers</a>
-                        <a href="#" class="mega-menu-link py-1">Main Courses</a>
-                        <a href="#" class="mega-menu-link py-1">Desserts</a>
-                        <a href="#" class="mega-menu-link py-1">Beverages</a>
-                      </div>
-                    </div>
-                    <div class="col-md-3 mega-menu-column">
-                      <h6 class="mega-menu-title">Promotions</h6>
-                      <div class="nav flex-column">
-                        <a href="#" class="mega-menu-link py-1"
-                          >Chef's Specials</a
-                        >
-                        <a href="#" class="mega-menu-link py-1">Weekly Deals</a>
-                        <a href="#" class="mega-menu-link py-1">Catering</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-
-          <!-- Right-side Icons -->
-          <ul class="navbar-nav">
-            <li class="nav-item cart-search">
-              <div
-                class="search-icon"
-                data-bs-toggle="modal"
-                data-bs-target="#searchModal"
-              >
-                <i class="fas fa-search"></i>
-              </div>
-              <div
-                class="cart-icon"
-                data-bs-toggle="modal"
-                data-bs-target="#cartModal"
-              >
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <div id="navbar"></div>
 
     <!-- Search Modal -->
     <div class="modal fade" id="searchModal" tabindex="-1">
@@ -224,7 +114,6 @@
           style="
             background-image: url('https://cheezious.com/_next/image?url=http%3A%2F%2Fs3-me-south-1.amazonaws.com%2Fcz-content-prod%2Fbanners%2Fwebsite%2F1725625729436-Cheezious%20New%20Web%20Banner%2002.jpg&w=1920&q=75');
           "
-        
         >
           <div class="carousel-overlay">
             <div class="hero-content animate__animated animate__fadeInDown">
@@ -975,85 +864,111 @@
 
 
 <!-- Footer Section -->
-<footer class="container-fluid bg-dark py-5">
-    <div class="container">
-        <div class="row text-warning">
-            <!-- Brand and Description Column -->
-            <div class="col-md-4 mb-4">
-                <h4 class="mb-3 text-warning">
-                    <i class="fas fa-utensils me-2"></i>Bite Burst
-                </h4>
-                <p>
-                    Your ultimate destination for mouthwatering meals and unforgettable dining experiences. We're passionate about serving fresh, high-quality food that brings joy to your table.
-                </p>
-                <div class="social-links mt-3">
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-outline-warning"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+<footer class="footer-modern position-relative overflow-hidden bg-dark py-5">
+  <!-- Animated Background Elements -->
+  <div class="animated-bg">
+      <div class="food-icon" style="background: url('https://static.vecteezy.com/system/resources/thumbnails/048/034/386/small_2x/fast-food-board-with-hamburger-french-fries-isolated-on-transparent-background-free-png.png') no-repeat center/contain; opacity: 0.1; position: absolute; width: 200px; height: 200px; right: -50px; top: 50px; animation: float 6s ease-in-out infinite;"></div>
+      <div class="food-icon" style="background: url('https://petesfamouspizza.com/wp-content/uploads/2023/07/main-pizza.png') no-repeat center/contain; opacity: 0.1; position: absolute; width: 150px; height: 150px; left: -30px; bottom: 30px; animation: float 8s ease-in-out infinite;"></div>
+  </div>
 
-            <!-- Quick Links Column -->
-            <div class="col-md-4 mb-4">
-                <h5 class="mb-3 text-warning">Quick Links</h5>
-                <div class="row">
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#home" class="text-warning text-decoration-none d-block">Home</a></li>
-                            <li><a href="#menu" class="text-warning text-decoration-none d-block">Menu</a></li>
-                            <li><a href="#services" class="text-warning text-decoration-none d-block">Services</a></li>
-                            <li><a href="#special-deals" class="text-warning text-decoration-none d-block">Special Deals</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#about" class="text-warning text-decoration-none d-block">About Us</a></li>
-                            <li><a href="#contact" class="text-warning text-decoration-none d-block">Contact</a></li>
-                            <li><a href="#" class="text-warning text-decoration-none d-block">Privacy Policy</a></li>
-                            <li><a href="#" class="text-warning text-decoration-none d-block">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <div class="container position-relative">
+      <!-- Main Footer Content -->
+      <div class="row gx-5">
+          <!-- Brand Column -->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+              <div class="brand-section pe-lg-4">
+                  <h3 class="text-warning mb-4 d-flex align-items-center animate__animated animate__fadeInLeft">
+                      <i class="fas fa-utensils me-2"></i>Bite Burst
+                  </h3>
+                  <p class="text-light mb-4 opacity-75">Your ultimate destination for mouthwatering meals and unforgettable dining experiences. We're passionate about serving fresh, high-quality food that brings joy to your table.</p>
+                  
+                  <!-- Social Media Links with Hover Effects -->
+                  <div class="social-links d-flex gap-3">
+                      <a href="#" class="social-icon-link" style="--hover-color: #1877f2;">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="#" class="social-icon-link" style="--hover-color: #e4405f;">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#" class="social-icon-link" style="--hover-color: #1da1f2;">
+                          <i class="fab fa-twitter"></i>
+                      </a>
+                      <a href="#" class="social-icon-link" style="--hover-color: #ff0000;">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
 
-            <!-- Newsletter and Contact Column -->
-            <div class="col-md-4 mb-4">
-                <h5 class="mb-3 text-warning">Stay Connected</h5>
-                <p class="mb-3">
-                    Subscribe to our newsletter for exclusive deals and updates!
-                </p>
-                <form>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control text-warning bg-dark border-warning" placeholder="Enter your email" required>
-                        <button class="btn btn-warning" type="submit">Subscribe</button>
-                    </div>
-                </form>
-                <div class="contact-info mt-4">
-                    <p class="mb-2">
-                        <i class="fas fa-map-marker-alt text-warning me-2"></i>123 Delicious Street, Food City
-                    </p>
-                    <p class="mb-2">
-                        <i class="fas fa-phone text-warning me-2"></i>(555) 123-4567
-                    </p>
-                    <p>
-                        <i class="fas fa-envelope text-warning me-2"></i>support@deliciouseats.com
-                    </p>
-                </div>
-            </div>
-        </div>
+          <!-- Quick Links -->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+              <h5 class="text-warning mb-4">Quick Links</h5>
+              <div class="row">
+                  <div class="col-6">
+                      <ul class="footer-links list-unstyled">
+                          <li><a href="#home" class="footer-link">Home</a></li>
+                          <li><a href="#menu" class="footer-link">Menu</a></li>
+                          <li><a href="#services" class="footer-link">Services</a></li>
+                          <li><a href="#special-deals" class="footer-link">Deals</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-6">
+                      <ul class="footer-links list-unstyled">
+                          <li><a href="#about" class="footer-link">About</a></li>
+                          <li><a href="#contact" class="footer-link">Contact</a></li>
+                          <li><a href="#" class="footer-link">Privacy</a></li>
+                          <li><a href="#" class="footer-link">Terms</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
 
-        <!-- Copyright Section -->
-        <hr class="border-secondary">
-        <div class="text-center pt-3 text-warning">
-            <p>
-                &copy; 2024 Bite Burst. All Rights Reserved. 
-                 <i class="fas fa-heart text-danger"></i> Team AIA
-            </p>
-        </div>
-    </div>
+          <!-- Newsletter Section -->
+          <div class="col-lg-4">
+              <div class="newsletter-section">
+                  <h5 class="text-warning mb-4">Join Our Newsletter</h5>
+                  <p class="text-light opacity-75 mb-4">Subscribe for exclusive deals and updates!</p>
+                  
+                  <!-- Modern Newsletter Form -->
+                  <form class="newsletter-form mb-4">
+                      <div class="input-group">
+                          <input type="email" class="form-control bg-transparent text-light" placeholder="Enter your email" 
+                                 style="border: 2px solid rgba(255,193,7,0.3); border-right: none;">
+                          <button class="btn btn-warning px-4" type="submit">
+                              <i class="fas fa-paper-plane"></i>
+                          </button>
+                      </div>
+                  </form>
+
+                  <!-- Contact Information -->
+                  <div class="contact-info">
+                      <div class="contact-item d-flex align-items-center mb-3">
+                          <i class="fas fa-map-marker-alt text-warning me-3"></i>
+                          <span class="text-light opacity-75">123 Delicious Street, Food City</span>
+                      </div>
+                      <div class="contact-item d-flex align-items-center mb-3">
+                          <i class="fas fa-phone text-warning me-3"></i>
+                          <span class="text-light opacity-75">(555) 123-4567</span>
+                      </div>
+                      <div class="contact-item d-flex align-items-center">
+                          <i class="fas fa-envelope text-warning me-3"></i>
+                          <span class="text-light opacity-75">support@biteburst.com</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="copyright-bar text-center mt-5 pt-4 border-top border-secondary">
+          <p class="text-light mb-0">
+              © 2024 Bite Burst. All rights reserved. Made with 
+              <i class="fas fa-heart text-danger mx-1"></i> by 
+              <span class="text-warning">Team AIA</span>
+          </p>
+      </div>
+  </div>
 </footer>
-
 
 
 
@@ -1104,5 +1019,6 @@
         }
       });
     </script>
+    <script src="navbar.js"></script>
   </body>
 </html>
