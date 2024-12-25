@@ -1,0 +1,303 @@
+/* Enhanced Navigation Styles */
+:root {
+    --primary-color: #fc5555;
+    --secondary-color: #ecf01d;
+    --dark-color: #93bfec;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* Advanced Navbar Styling */
+.navbar-custom {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-link {
+    color: white !important;
+    position: relative;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.nav-link:hover {
+    transform: translateY(-3px);
+}
+
+/* Dropdown Mega Menu */
+.dropdown-mega-menu {
+    position: static;
+}
+
+.dropdown-mega-menu .dropdown-menu {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.mega-menu-column {
+    padding: 10px;
+}
+
+.mega-menu-title {
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.mega-menu-link {
+    color: var(--dark-color);
+    transition: color 0.3s ease;
+}
+
+.mega-menu-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Responsive Cart and Search */
+.navbar-nav .nav-item.cart-search {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon, .search-icon {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cart-icon:hover, .search-icon:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .navbar-custom {
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .dropdown-mega-menu .dropdown-menu {
+        position: relative;
+    }
+}
+
+ :root {
+            --primary-red: #DC2F2F;
+            --secondary-red: #A31C1C;
+            --primary-yellow: #FFD700;
+            --accent-yellow: #FFC107;
+        }
+
+        body, html {
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Carousel Styling */
+        #heroCarousel {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+        }
+
+        .carousel-item {
+            height: 90vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            color: var(--primary-yellow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .hero-btn {
+            background-color: var(--primary-red);
+            border-color: var(--secondary-red);
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--secondary-red);
+            transform: scale(1.05);
+        }
+
+        /* Food Item Animations */
+        .floating-food {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatFood 5s infinite alternate;
+        }
+
+        @keyframes floatFood {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-30px);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+
+
+
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Debug Styles for Carousel */
+        #heroCarousel {
+           margin-top:80px ;
+            min-height: 500px; /* Ensure minimum height */
+        }
+
+        .carousel-item {
+            background-color: rgba(0,0,0,0.1); /* Light background to check visibility */
+            min-height: 500px;
+        }
+
+        .carousel-item.active {
+            display: block !important; /* Force display of active item */
+        }
+
+        /* Ensure background images load */
+        .carousel-item {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .deal-poster {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .deal-poster:hover {
+            transform: scale(1.05);
+        }
+        .poster-overlay {
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .deal-poster:hover .poster-overlay {
+            opacity: 1;
+        }

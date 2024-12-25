@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYle0dIli_y0vLXFDGa-BzZNqmaKYsE7za1VTJvkVOOnOAN8HazExw2En3WAQLN7l2cUlndTfoP4YZLgRXNiZ5fOup0ph4nkoCTheqUtbFHuxM9aJECTc_QK_AZJKPOsUrW3Wk4SWJYCF8i0uizmrQg5RkiAm8gmWX0DHTKp-MWRxenYPPq6_n7v9Gg0I/s320/pngwing.com%20(1).png" type="image/x-icon">
+    <title>Bite Burst</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 1rem;
+        }
+        
+        h1 {
+            color: red !important;
+            text-align: center;
+            font-size: 6rem !important;
+            margin-bottom: 4rem !important;
+            margin-top: 2rem !important;
+        }
+
+        .pizza-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .pizza-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pizza-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pizza-card img {
+            max-width: 250px;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .pizza-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .pizza-description {
+            color: #666;
+            margin-bottom: 1rem;
+            min-height: 3rem;
+        }
+
+        .pizza-price {
+            background-color: rgb(255, 55, 0);
+            color: white;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background-color: rgb(255, 221, 0);
+            color: black;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: rgb(255, 200, 0);
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                
+            }
+
+            .pizza-card {
+                width: calc(50% - 1.5rem);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .pizza-card {
+                width: 100%;
+            }
+
+            .font-size {
+                font-size: 40px !important;
+            }
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Animation Library -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylez.css" />
+  </head>
+  <body>
+    <!-- Enhanced Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-utensils me-2"></i>Bite Burst
+        </a>
+
+        <!-- Responsive Toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>1
+
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <!-- Mega Menu Dropdown -->
+            <li class="nav-item dropdown dropdown-mega-menu">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  Menu
+                </a>
+                <div class="dropdown-menu">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-3 mega-menu-column">
+                        <h6 class="mega-menu-title">Burgers</h6>
+                        <div class="nav flex-column">
+                          <a href="burgers.html" class="mega-menu-link py-1">Zinger Burger</a>
+                          <a href="burgers.html" class="mega-menu-link py-1">Mighty Burger</a>
+                          <a href="burgers.html" class="mega-menu-link py-1">Beef Burger</a>
+                          <a href="burgers.html" class="mega-menu-link py-1">Cheese Burger</a>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mega-menu-column">
+                        <h6 class="mega-menu-title">Pizzas</h6>
+                        <div class="nav flex-column">
+                          <a href="pizza.html" class="mega-menu-link py-1">Chicken tikka</a>
+                          <a href="pizza.html" class="mega-menu-link py-1">Cheese</a>
+                          <a href="pizza.html" class="mega-menu-link py-1">Fajita</a>
+                          <a href="pizza.html" class="mega-menu-link py-1">BBQ Chicken</a>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mega-menu-column">
+                        <h6 class="mega-menu-title">Pasta and Fries</h6>
+                        <div class="nav flex-column">
+                          <a href="pasta-fries.html" class="mega-menu-link py-1">Pastas</a>
+                          
+                          <a href="pasta-fries.html" class="mega-menu-link py-1">Fries</a>
+                          <a href="pasta-fries.html" class="mega-menu-link py-1">Italian Pasta</a>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mega-menu-column">
+                        <h6 class="mega-menu-title">Chef's Special</h6>
+                        <div class="nav flex-column">
+                          <a href="chefs-special.html" class="mega-menu-link py-1"
+                            >Our Menu</a
+                          >
+                          <a href="chefs-special.html" class="mega-menu-link py-1">Weekly Deals</a>
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Right-side Icons -->
+          <ul class="navbar-nav">
+            <li class="nav-item cart-search">
+              <div
+                class="search-icon"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal"
+              >
+                <i class="fas fa-search"></i>
+              </div>
+              <div
+                class="cart-icon"
+                data-bs-toggle="modal"
+                data-bs-target="#cartModal"
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Search Our Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search dishes, cuisines..."
+            />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="font-size">Pizzas</h1>
+    
+    <div class="pizza-container">
+        <!-- Chicken tikka -->
+        <div class="pizza-card">
+            <img src="https://pizzabake.pk/wp-content/uploads/2022/08/1628837643-chicken-tikka-1.png" alt="chicken tikka">
+            <p class="pizza-name">Chicken Tikka</p>
+            <p class="pizza-description">Tikka chunks,onion and green pepper</p>
+            <div class="pizza-price">Rs 650</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!--creamy tikka  -->
+        <div class="pizza-card">
+            <img src="https://png.pngtree.com/png-vector/20240208/ourmid/pngtree-cheese-and-chicken-pizza-png-image_11713322.png" alt="">
+            <p class="pizza-name">Crreamy Tikka</p>
+            <p class="pizza-description">
+
+                Cheese Mayo base, with Chicken Chunks</p>
+            <div class="pizza-price">Rs 800</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!-- fajita-->
+        <div class="pizza-card">
+            <img src="https://www.pizzrella.com/cdn/shop/files/Fajita.png?v=1690390630&width=1445" alt="">
+            <p class="pizza-name">Chicken Fajita</p>
+            <p class="pizza-description">
+                  Chicken Fajita chunks, onion, jalapenos & green peppers.</p>
+            <div class="pizza-price">Rs 700</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!-- super cheese -->
+        <div class="pizza-card">
+            <img src="https://i.pinimg.com/736x/dd/3a/72/dd3a72e8611869ad846e87b7ed1189cc.jpg" alt="">
+            <p class="pizza-name">Super Cheese</p>
+            <p class="pizza-description">Filled with cheesy cheese</p>
+            <div class="pizza-price">Rs 700</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+        <!-- vegie -->
+        <div class="pizza-card">
+            <img src="https://www.pngitem.com/pimgs/m/615-6159032_aerial-view-of-a-cauliflower-crust-veggie-pizza.png" alt="">
+            <p class="pizza-name">Veggie</p>
+            <p class="pizza-description">
+
+                Onions, tomatoes, green peppers, mushrooms, & olives</p>
+            <div class="pizza-price">Rs 800</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!--peparoni  -->
+        <div class="pizza-card">
+            <img src="https://i.pinimg.com/564x/8e/67/af/8e67af201ab445a19b006377defcb7e6.jpg" alt="">
+            <p class="pizza-name">Pepperoni Passion</p>
+            <p class="pizza-description">
+
+                Pepperoni & cheese</p>
+            <div class="pizza-price">Rs 850</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!-- bbq chicken -->
+        <div class="pizza-card">
+            <img src="https://www.pizzrella.com/cdn/shop/files/BBQ1-PhotoRoom.png-PhotoRoom.png?v=1690390939" alt="">
+            <p class="pizza-name">BBQ Chicken</p>
+            <p class="pizza-description">Spicy chicken chunks & onions topped with BBQ sauce</p>
+            <div class="pizza-price">Rs 800</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+
+        <!-- kebab -->
+        <div class="pizza-card">
+            <img src="https://cdn.sanity.io/images/dycwrm08/production/261e6458a058af0ee1ee3af3d94d5c97b0e41dbd-1000x997.png?w=300&h=300&fit=crop&crop=focalpoint&auto=format" alt="">
+            <p class="pizza-name">Kebab Pizza</p>
+            <p class="pizza-description">Topped with spiced kebab meat and fresh vegetables</p>
+            <div class="pizza-price">Rs 600</div>
+            <button class="add-to-cart">Add To Cart</button>
+        </div>
+    </div>
+    
+                        <!-- Sides Tab -->
+                        <div class="tab-pane fade" id="sides" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <img src="https://static.vecteezy.com/system/resources/previews/048/034/480/non_2x/board-of-fries-with-sauce-isolated-on-transparent-background-free-png.png" class="card-img-top" alt="Classic Fries" style="height: 200px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Classic Fries</h5>
+                                            <p class="text-muted">Crispy golden french fries</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h5 text-warning mb-0">$3.99</span>
+                                                <button class="btn btn-sm btn-danger">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <img src="https://static.vecteezy.com/system/resources/previews/032/325/506/non_2x/french-fries-with-cheese-and-bacon-isolated-on-transparent-background-file-cut-out-ai-generated-png.png" class="card-img-top" alt="Loaded Fries" style="height: 200px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Loaded Fries</h5>
+                                            <p class="text-muted">Fries with cheese and bacon</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h5 text-warning mb-0">$5.99</span>
+                                                <button class="btn btn-sm btn-danger">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+            </div>
+    
+            <!-- Order Summary and Checkout -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="text-danger mb-3">Your Order</h4>
+                                    <div id="order-summary">
+                                        <p class="text-muted">No items in cart</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <div class="mb-3">
+                                        <strong>Total:</strong> 
+                                        <span id="cart-total" class="text-danger h4">$0.00</span>
+                                    </div>
+                                    <button class="btn btn-danger btn-lg w-100" disabled>Proceed to Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- place Order -->
+
+    <!-- Contact Us -->
+
+    <section id="contact" class="container-fluid py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="contact-info bg-white p-4 h-100 shadow-sm rounded">
+                        <h2 class="text-danger mb-4">Contact Information</h2>
+                        <div class="contact-details">
+                            <div class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt text-danger me-3 fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-1 text-danger">Our Location</h5>
+                                    <p class="text-muted mb-0">123 Delicious Street, Food City, FC 12345</p>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-phone text-danger me-3 fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-1 text-danger">Phone</h5>
+                                    <p class="text-muted mb-0">(555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-envelope text-danger me-3 fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-1 text-danger">Email</h5>
+                                    <p class="text-muted mb-0">support@deliciouseats.com</p>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-clock text-danger me-3 fa-2x"></i>
+                                <div>
+                                    <h5 class="mb-1 text-danger">Business Hours</h5>
+                                    <p class="text-muted mb-0">Mon-Sun: 11:00 AM - 10:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <h5 class="text-danger mb-3">Follow Us</h5>
+                            <div>
+                                <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form bg-white p-4 h-100 shadow-sm rounded">
+                        <h2 class="text-danger mb-4">Send Us a Message</h2>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label text-danger">Your Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label text-danger">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label text-danger">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label text-danger">Subject</label>
+                                <input type="text" class="form-control" id="subject" placeholder="Enter message subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label text-danger">Your Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Write your message here" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-lg w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+
+
+<!-- footer section here -->
+
+<!-- Footer Section -->
+<footer class="container-fluid bg-dark py-5">
+    <div class="container">
+        <div class="row text-warning">
+            <!-- Brand and Description Column -->
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-3 text-warning">
+                    <i class="fas fa-utensils me-2"></i>Bite Burst
+                </h4>
+                <p>
+                    Your ultimate destination for mouthwatering meals and unforgettable dining experiences. We're passionate about serving fresh, high-quality food that brings joy to your table.
+                </p>
+                <div class="social-links mt-3">
+                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-outline-warning"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3 text-warning">Quick Links</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><a href="#home" class="text-warning text-decoration-none d-block">Home</a></li>
+                            <li><a href="#menu" class="text-warning text-decoration-none d-block">Menu</a></li>
+                            <li><a href="#services" class="text-warning text-decoration-none d-block">Services</a></li>
+                            <li><a href="#special-deals" class="text-warning text-decoration-none d-block">Special Deals</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><a href="#about" class="text-warning text-decoration-none d-block">About Us</a></li>
+                            <li><a href="#contact" class="text-warning text-decoration-none d-block">Contact</a></li>
+                            <li><a href="#" class="text-warning text-decoration-none d-block">Privacy Policy</a></li>
+                            <li><a href="#" class="text-warning text-decoration-none d-block">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter and Contact Column -->
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3 text-warning">Stay Connected</h5>
+                <p class="mb-3">
+                    Subscribe to our newsletter for exclusive deals and updates!
+                </p>
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control text-warning bg-dark border-warning" placeholder="Enter your email" required>
+                        <button class="btn btn-warning" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <div class="contact-info mt-4">
+                    <p class="mb-2">
+                        <i class="fas fa-map-marker-alt text-warning me-2"></i>123 Delicious Street, Food City
+                    </p>
+                    <p class="mb-2">
+                        <i class="fas fa-phone text-warning me-2"></i>(555) 123-4567
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope text-warning me-2"></i>support@deliciouseats.com
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <hr class="border-secondary">
+        <div class="text-center pt-3 text-warning">
+            <p>
+                &copy; 2024 Bite Burst. All Rights Reserved. 
+                 <i class="fas fa-heart text-danger"></i> Team AIA
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- footer section here -->
+
+    <!-- Bootstrap and Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Force carousel initialization
+        var carousel = document.getElementById("heroCarousel");
+        if (carousel) {
+          new bootstrap.Carousel(carousel);
+          console.log("Carousel initialized");
+        } else {
+          console.error("Carousel element not found");
+        }
+      });
+    </script>
+  </body>
+</html>

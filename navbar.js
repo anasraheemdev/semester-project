@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const navbarContent = `
+  const navbarContent = `
       
 <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
   <div class="container">
@@ -19,62 +19,63 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
         </li>
 
        
         <li class="nav-item dropdown dropdown-mega-menu">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            data-bs-toggle="dropdown"
-          >
-            Menu
-          </a>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-3 mega-menu-column">
-                  <h6 class="mega-menu-title">Cuisine Types</h6>
-                  <div class="nav flex-column">
-                    <a href="#" class="mega-menu-link py-1">Italian</a>
-                    <a href="#" class="mega-menu-link py-1">Mexican</a>
-                    <a href="#" class="mega-menu-link py-1">Asian Fusion</a>
-                    <a href="#" class="mega-menu-link py-1">Vegetarian</a>
-                  </div>
-                </div>
-                <div class="col-md-3 mega-menu-column">
-                  <h6 class="mega-menu-title">Special Diets</h6>
-                  <div class="nav flex-column">
-                    <a href="#" class="mega-menu-link py-1">Gluten-Free</a>
-                    <a href="#" class="mega-menu-link py-1">Vegan</a>
-                    <a href="#" class="mega-menu-link py-1">Keto</a>
-                    <a href="#" class="mega-menu-link py-1">Low-Carb</a>
-                  </div>
-                </div>
-                <div class="col-md-3 mega-menu-column">
-                  <h6 class="mega-menu-title">Meal Types</h6>
-                  <div class="nav flex-column">
-                    <a href="#" class="mega-menu-link py-1">Appetizers</a>
-                    <a href="#" class="mega-menu-link py-1">Main Courses</a>
-                    <a href="#" class="mega-menu-link py-1">Desserts</a>
-                    <a href="#" class="mega-menu-link py-1">Beverages</a>
-                  </div>
-                </div>
-                <div class="col-md-3 mega-menu-column">
-                  <h6 class="mega-menu-title">Promotions</h6>
-                  <div class="nav flex-column">
-                    <a href="#" class="mega-menu-link py-1"
-                      >Chef's Specials</a
-                    >
-                    <a href="#" class="mega-menu-link py-1">Weekly Deals</a>
-                    <a href="#" class="mega-menu-link py-1">Catering</a>
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Menu
+              </a>
+              <div class="dropdown-menu">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Burgers</h6>
+                      <div class="nav flex-column">
+                        <a href="burgers.html" class="mega-menu-link py-1">Zinger Burger</a>
+                        <a href="burgers.html" class="mega-menu-link py-1">Mighty Burger</a>
+                        <a href="burgers.html" class="mega-menu-link py-1">Beef Burger</a>
+                        <a href="burgers.html" class="mega-menu-link py-1">Cheese Burger</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Pizzas</h6>
+                      <div class="nav flex-column">
+                        <a href="pizza.html" class="mega-menu-link py-1">Chicken tikka</a>
+                        <a href="pizza.html" class="mega-menu-link py-1">Cheese</a>
+                        <a href="pizza.html" class="mega-menu-link py-1">Fajita</a>
+                        <a href="pizza.html" class="mega-menu-link py-1">BBQ Chicken</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Pasta and Fries</h6>
+                      <div class="nav flex-column">
+                        <a href="pasta-fries.html" class="mega-menu-link py-1">Pastas</a>
+                        
+                        <a href="pasta-fries.html" class="mega-menu-link py-1">Fries</a>
+                        <a href="pasta-fries.html" class="mega-menu-link py-1">Italian Pasta</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mega-menu-column">
+                      <h6 class="mega-menu-title">Chef's Special</h6>
+                      <div class="nav flex-column">
+                        <a href="chefs-special.html" class="mega-menu-link py-1"
+                          >Our Menu</a
+                        >
+                        <a href="chefs-special.html" class="mega-menu-link py-1">Weekly Deals</a>
+                        
+                        
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </li>
+          </li>
 
         <li class="nav-item">
           <a class="nav-link" href="services.html">Services</a>
@@ -111,10 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
     `;
-  
-    const navbarPlaceholder = document.getElementById("navbar");
-    if (navbarPlaceholder) {
-      navbarPlaceholder.innerHTML = navbarContent;
-    }
-  });
-  
+
+  const navbarPlaceholder = document.getElementById("navbar");
+  if (navbarPlaceholder) {
+    navbarPlaceholder.innerHTML = navbarContent;
+  }
+});
