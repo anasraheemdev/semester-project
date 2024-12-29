@@ -4,40 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - Bite Burst</title>
+    <title>Enhanced Dashboard - Bite Burst</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- External CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
 
     <style>
         :root {
             --primary-red: #ff3700;
             --primary-yellow: #ffdd00;
+            --hover-red: #e63200;
         }
 
+        /* Enhanced Animations */
+        .dashboard-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Enhanced Navigation */
         .navbar-custom {
             background-color: var(--primary-red) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-custom .navbar-brand,
         .navbar-custom .nav-link {
             color: white !important;
+            transition: all 0.3s ease;
         }
 
-        .dashboard-card {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        .navbar-custom .nav-link:hover {
+            color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
         }
 
-        .dashboard-card:hover {
-            transform: scale(1.02);
-        }
-
+        /* Enhanced Status Indicators */
         .status-pending {
             color: var(--primary-yellow);
+            animation: pulse 2s infinite;
         }
 
         .status-delivered {
@@ -48,46 +62,55 @@
             color: var(--primary-red);
         }
 
-        .nav-pills .nav-link.active {
-            background-color: var(--primary-red);
-        }
-
-        .nav-pills .nav-link {
-            color: var(--primary-red);
-        }
-
-        .progress-bar {
-            background-color: var(--primary-red);
-        }
-
+        /* Enhanced Buttons */
         .btn-custom-red {
             background-color: var(--primary-red);
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom-red:hover {
+            background-color: var(--hover-red);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .btn-custom-yellow {
             background-color: var(--primary-yellow);
             color: black;
+            transition: all 0.3s ease;
         }
 
-        .loyalty-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--primary-yellow);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--primary-red);
+        .btn-custom-yellow:hover {
+            background-color: #e6c700;
+            transform: translateY(-2px);
         }
 
+        /* Enhanced Profile Section */
+        .profile-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Stats Cards */
         .stats-card {
             border-left: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
         }
 
+        .stats-card:hover {
+            border-left-width: 8px;
+        }
+
+        /* Enhanced Notifications */
         .notification-badge {
             position: relative;
             display: inline-block;
@@ -97,26 +120,255 @@
             position: absolute;
             top: -8px;
             right: -8px;
-            background: var(--primary-red);
-            color: white;
+            background: var(--primary-yellow);
+            color: black;
             border-radius: 50%;
             padding: 2px 6px;
             font-size: 12px;
+            animation: bounce 2s infinite;
         }
 
-        .reward-progress {
+        /* New Feature: Live Order Tracking */
+        .order-tracking-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-red);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 0;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
+        }
+
+        /* New Feature: Achievement Badges */
+        .achievement-badge {
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* New Feature: Dynamic Menu Items */
+        .menu-item-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 55, 0, 0.9);
+            color: white;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item-card:hover .menu-item-overlay {
+            bottom: 0;
+        }
+
+        /* Enhanced Progress Bars */
+        .progress {
             height: 10px;
             border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+
+        .progress-bar {
+            background-color: var(--primary-red);
+            transition: width 1s ease;
+        }
+
+        /* New Feature: Customizable Themes */
+        [data-theme="dark"] {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .card {
+            background-color: #2d2d2d;
+            border-color: #404040;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* New Feature: Quick Actions Menu */
+        .quick-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .quick-actions-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-actions-menu {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .quick-actions-menu.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* New Feature: Order History Chart */
+        .order-chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Enhanced Loading States */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-yellow);
+            border-top-color: var(--primary-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+
+
+        .profile-container {
+            overflow: visible !important;
+        }
+
+        .padding-4 {
+            padding: 1rem;
+        }
+
+        .loyalty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: gold;
+        }
+
+        /* Optional: Add a subtle transition effect */
+        .profile-image {
+            transition: transform 0.2s;
+        }
+
+        .profile-image:hover {
+            transform: translate(-50%, -50%) scale(1.05);
         }
     </style>
 </head>
 
-<body class="bg-light">
-    <!-- Enhanced Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-utensils me-2"></i>Bite Burst
+            <a class="navbar-brand animate__animated animate__fadeIn" href="#">
+                <i class="fas fa-pizza-slice me-2"></i>Bite Burst
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -124,123 +376,234 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item me-3">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#notificationsModal">
                             <div class="notification-badge">
                                 <i class="fas fa-bell"></i>
                                 <span class="notification-count">3</span>
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="users.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-user-circle me-1"></i>
+                            Anas Raheem
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container py-5">
-        <!-- Quick Stats Row -->
-        <div class="row mb-4">
+    <!-- Main Content Container -->
+    <div class="container py-4">
+        <!-- Enhanced Stats Row -->
+        <div class="row g-4 mb-4">
             <div class="col-md-3">
-                <div class="card stats-card">
+                <div class="card stats-card animate__animated animate__fadeInUp">
                     <div class="card-body">
-                        <h6 class="text-muted">Total Orders</h6>
-                        <h3>24</h3>
-                        <div class="mt-2">
-                            <span class="text-success"><i class="fas fa-arrow-up"></i> 12%</span>
-                            <small class="text-muted">vs last month</small>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-shopping-bag fa-2x text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="text-muted mb-0">Total Orders</h6>
+                                <h3 class="mb-0">24</h3>
+                                <div class="mt-2">
+                                    <span class="text-success">
+                                        <i class="fas fa-arrow-up"></i> 12%
+                                    </span>
+                                    <small class="text-muted">vs last month</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stats-card">
+                <div class="card stats-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="card-body">
-                        <h6 class="text-muted">Reward Points</h6>
-                        <h3>450</h3>
-                        <div class="mt-2">
-                            <span class="text-success"><i class="fas fa-star"></i> Silver Member</span>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-star fa-2x text-warning"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="text-muted mb-0">Reward Points</h6>
+                                <h3 class="mb-0">450</h3>
+                                <div class="mt-2">
+                                    <span class="text-warning">
+                                        <i class="fas fa-crown"></i> Silver Member
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stats-card">
+                <div class="card stats-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="card-body">
-                        <h6 class="text-muted">Total Savings</h6>
-                        <h3>Rs. 2,500</h3>
-                        <div class="mt-2">
-                            <span class="text-primary"><i class="fas fa-tags"></i> From Promos</span>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-piggy-bank fa-2x text-success"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="text-muted mb-0">Total Savings</h6>
+                                <h3 class="mb-0">Rs. 2,500</h3>
+                                <div class="mt-2">
+                                    <span class="text-success">
+                                        <i class="fas fa-tags"></i> From Promos
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="card stats-card">
+                <div class="card stats-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="card-body">
-                        <h6 class="text-muted">Active Vouchers</h6>
-                        <h3>3</h3>
-                        <div class="mt-2">
-                            <span class="text-warning"><i class="fas fa-clock"></i> Expiring Soon</span>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-ticket-alt fa-2x text-danger"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="text-muted mb-0">Active Vouchers</h6>
+                                <h3 class="mb-0">3</h3>
+                                <div class="mt-2">
+                                    <span class="text-danger">
+                                        <i class="fas fa-clock"></i> Expiring Soon
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <!-- Enhanced User Profile Section -->
-            <div class="col-lg-4 mb-4">
-                <div class="card dashboard-card position-relative">
-                    <div class="loyalty-badge">
-                        <i class="fas fa-crown"></i>
+        <!-- Main Content Area -->
+        <div class="row g-4">
+            <!-- Enhanced Profile Section -->
+            <div class="col-lg-4 ">
+                <div class="card dashboard-card profile-container animate__animated animate__fadeIn">
+                    <div class="position-relative padding-4" style="min-height: 80px; background-color: #f8f9fa;">
+                        <!-- Profile Image with proper positioning -->
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEflfDxWIQJuA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1713264864535?e=2147483647&v=beta&t=D88Lc9dIIHHIqT4CGH6Umlh7gEz9L6sdw-h3Jg4kRRY"
+                            alt="Profile Picture" class="img-fluid rounded-circle mx-auto d-block profile-image" style="position: absolute; 
+                                    top: 0; 
+                                    left: 50%; 
+                                    transform: translate(-50%, -50%);
+                                    border: 4px solid white; 
+                                    width: 100px; 
+                                    height: 100px;
+                                    object-fit: cover;
+                                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div class="loyalty-badge">
+                            <i class="fas fa-crown"></i>
+                        </div>
                     </div>
                     <div class="card-body text-center">
-                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEflfDxWIQJuA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1713264864535?e=2147483647&v=beta&t=D88Lc9dIIHHIqT4CGH6Umlh7gEz9L6sdw-h3Jg4kRRY" class="rounded-circle mb-3" alt="Profile Picture">
                         <h4>Anas Raheem</h4>
-                        <p class="text-muted">Member since January 2024</p>
+                        <p class="text-muted">Silver Member since January 2024</p>
 
-                        <!-- Reward Progress -->
+                        <!-- Enhanced Reward Progress -->
                         <div class="mb-4">
                             <h6 class="text-muted mb-2">Progress to Gold Status</h6>
-                            <div class="progress reward-progress">
-                                <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    style="width: 75%"></div>
                             </div>
                             <small class="text-muted">450/600 points</small>
                         </div>
 
+                        <!-- Achievement Badges -->
+                        <div class="mb-4">
+                            <h6 class="text-muted mb-3">Achievements</h6>
+                            <div class="achievement-badge" data-bs-toggle="tooltip" title="Early Adopter">
+                                <i class="fas fa-award fa-2x text-warning"></i>
+                            </div>
+                            <div class="achievement-badge" data-bs-toggle="tooltip" title="5 Star Reviewer">
+                                <i class="fas fa-star fa-2x text-primary"></i>
+                            </div>
+                            <div class="achievement-badge" data-bs-toggle="tooltip" title="Food Explorer">
+                                <i class="fas fa-compass fa-2x text-success"></i>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="row g-2 mb-4">
+                            <div class="col-4">
+                                <div class="p-3 border rounded">
+                                    <h6 class="mb-1">24</h6>
+                                    <small class="text-muted">Orders</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="p-3 border rounded">
+                                    <h6 class="mb-1">4.8</h6>
+                                    <small class="text-muted">Rating</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="p-3 border rounded">
+                                    <h6 class="mb-1">6</h6>
+                                    <small class="text-muted">Reviews</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="d-grid gap-2">
-                            <button class="btn btn-custom-red">Edit Profile</button>
-                            <button class="btn btn-custom-yellow">Change Password</button>
+                            <button class="btn btn-custom-red" data-bs-toggle="modal"
+                                data-bs-target="#editProfileModal">
+                                <i class="fas fa-user-edit me-2"></i>Edit Profile
+                            </button>
+                            <button class="btn btn-custom-yellow" data-bs-toggle="modal"
+                                data-bs-target="#preferencesModal">
+                                <i class="fas fa-cog me-2"></i>Preferences
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Vouchers Section -->
-                <div class="card dashboard-card mt-4">
+                <!-- Active Vouchers Card -->
+                <div class="card dashboard-card mt-4 animate__animated animate__fadeIn">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Your Vouchers</h5>
-                        <div class="list-group">
-                            <div class="list-group-item">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">20% OFF</h6>
-                                        <small class="text-muted">Valid on all orders</small>
+                        <h5 class="card-title d-flex justify-content-between align-items-center">
+                            <span>Active Vouchers</span>
+                            <button class="btn btn-sm btn-custom-red" data-bs-toggle="modal"
+                                data-bs-target="#voucherModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </h5>
+                        <div class="voucher-list">
+                            <div class="card mb-2 border-warning">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">20% OFF</h6>
+                                            <small class="text-muted">Valid until Dec 31, 2024</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-warning">Use Now</button>
                                     </div>
-                                    <button class="btn btn-sm btn-custom-red">Use</button>
                                 </div>
                             </div>
-                            <div class="list-group-item">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">Free Delivery</h6>
-                                        <small class="text-muted">Min order Rs. 1000</small>
+                            <div class="card mb-2 border-success">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Free Delivery</h6>
+                                            <small class="text-muted">No minimum order</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-success">Use Now</button>
                                     </div>
-                                    <button class="btn btn-sm btn-custom-red">Use</button>
                                 </div>
                             </div>
                         </div>
@@ -248,231 +611,187 @@
                 </div>
             </div>
 
-            <!-- Enhanced Dashboard Content -->
+            <!-- Main Dashboard Content -->
             <div class="col-lg-8">
                 <div class="card dashboard-card">
                     <div class="card-body">
+                        <!-- Enhanced Navigation Tabs -->
                         <ul class="nav nav-pills mb-4" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="pill" href="#orders">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#orders">
                                     <i class="fas fa-shopping-bag me-2"></i>Orders
-                                </a>
+                                </button>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="pill" href="#favorites">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#favorites">
                                     <i class="fas fa-heart me-2"></i>Favorites
-                                </a>
+                                </button>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="pill" href="#addresses">
-                                    <i class="fas fa-map-marker-alt me-2"></i>Addresses
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="pill" href="#rewards">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#rewards">
                                     <i class="fas fa-gift me-2"></i>Rewards
-                                </a>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#analytics">
+                                    <i class="fas fa-chart-line me-2"></i>Analytics
+                                </button>
                             </li>
                         </ul>
 
+                        <!-- Tab Content -->
                         <div class="tab-content">
                             <!-- Orders Tab -->
-                            <div id="orders" class="tab-pane fade show active">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="tab-pane fade show active" id="orders">
+                                <!-- Order Filters -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
                                     <h5 class="mb-0">Recent Orders</h5>
-                                    <div class="btn-group">
-                                        <button class="btn btn-outline-secondary btn-sm">Filter</button>
-                                        <button class="btn btn-outline-secondary btn-sm">Sort</button>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-select form-select-sm">
+                                            <option>All Orders</option>
+                                            <option>Pending</option>
+                                            <option>Delivered</option>
+                                            <option>Cancelled</option>
+                                        </select>
+                                        <button class="btn btn-sm btn-custom-red">
+                                            <i class="fas fa-filter me-1"></i>Filter
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="list-group">
-                                    <div class="list-group-item">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Order #12345</h5>
-                                            <small class="status-pending">
-                                                <i class="fas fa-clock"></i> Pending
-                                            </small>
+
+                                <!-- Active Order with Tracking -->
+                                <div class="card mb-4 border-warning animate__animated animate__fadeIn">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5 class="mb-0">Order #12345</h5>
+                                            <span class="badge bg-warning">
+                                                <i class="fas fa-clock me-1"></i>In Progress
+                                            </span>
                                         </div>
-                                        <p class="mb-1">1x Crown Crust Pizza, 2x Classic Fries</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small>Total: Rs. 1,500 - Ordered: Today</small>
-                                            <button class="btn btn-sm btn-custom-red">Track Order</button>
+
+                                        <!-- Order Timeline -->
+                                        <div class="order-tracking-timeline">
+                                            <div class="timeline-item">
+                                                <h6>Order Confirmed</h6>
+                                                <small class="text-muted">2:30 PM</small>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <h6>Preparing Your Food</h6>
+                                                <small class="text-muted">2:35 PM</small>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <h6>Out for Delivery</h6>
+                                                <small class="text-muted">Expected by 3:15 PM</small>
+                                            </div>
+                                        </div>
+
+                                        <!-- Order Details -->
+                                        <div class="mt-3">
+                                            <p class="mb-2"><strong>Items:</strong> 1x Crown Crust Pizza, 2x Classic
+                                                Fries</p>
+                                            <p class="mb-2"><strong>Total:</strong> Rs. 1,500</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-times me-1"></i>Cancel Order
+                                                </button>
+                                                <button class="btn btn-sm btn-custom-red">
+                                                    <i class="fas fa-map-marker-alt me-1"></i>Track Order
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="list-group-item">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Order #12344</h5>
-                                            <small class="status-delivered">
-                                                <i class="fas fa-check-circle"></i> Delivered
-                                            </small>
+                                </div>
+
+                                <!-- Past Orders -->
+                                <div class="card mb-3 animate__animated animate__fadeIn">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5 class="mb-0">Order #12344</h5>
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-check-circle me-1"></i>Delivered
+                                            </span>
                                         </div>
-                                        <p class="mb-1">1x Chicken Fajita, 1x Steak</p>
+                                        <p class="mb-2">1x Chicken Fajita, 1x Steak</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <small>Total: Rs. 1,799 - Ordered: Yesterday</small>
-                                            <button class="btn btn-sm btn-outline-secondary">Reorder</button>
+                                            <div>
+                                                <p class="mb-0"><strong>Total:</strong> Rs. 1,799</p>
+                                                <small class="text-muted">Delivered Yesterday</small>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-custom-red">
+                                                    <i class="fas fa-redo me-1"></i>Reorder
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-star me-1"></i>Review
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Favorites Tab -->
-                            <div id="favorites" class="tab-pane fade">
-                                <div class="row g-3">
+                            <div class="tab-pane fade" id="favorites">
+                                <div class="row g-4">
                                     <div class="col-md-6">
-                                        <div class="card">
-                                            <img src="https://png.pngtree.com/png-vector/20240208/ourmid/pngtree-cheese-and-chicken-pizza-png-image_11713322.png" class="card-img-top" alt="Crown Crust">
+                                        <div class="card menu-item-card">
+                                            <img src="/api/placeholder/400/200" class="card-img-top" alt="Crown Crust">
+                                            <div class="menu-item-overlay">
+                                                <h5 class="mb-2">Crown Crust</h5>
+                                                <p class="mb-3">Loaded with cheese and your favorite toppings</p>
+                                                <button class="btn btn-sm btn-light">Order Now</button>
+                                            </div>
                                             <div class="card-body">
-                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="d-flex justify-content-between align-items-center">
                                                     <h5 class="card-title mb-0">Crown Crust</h5>
-                                                    <button class="btn btn-link text-danger">
+                                                    <span class="text-danger">
                                                         <i class="fas fa-heart"></i>
-                                                    </button>
+                                                    </span>
                                                 </div>
-                                                <p class="card-text">Rs. 1000</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <button class="btn btn-custom-red btn-sm">Order Now</button>
-                                                    <button class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </button>
-                                                </div>
+                                                <p class="card-text mt-2">Rs. 1,000</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <img src="https://www.pizzrella.com/cdn/shop/files/Fajita.png?v=1690390630&width=1445" class="card-img-top"
-                                                alt="Chicken Fajita">
-                                            <div class="card-body">
-                                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                                    <h5 class="card-title mb-0">Chicken Fajita</h5>
-                                                    <button class="btn btn-link text-danger">
-                                                        <i class="fas fa-heart"></i>
-                                                    </button>
-                                                </div>
-                                                <p class="card-text">Rs. 999</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <button class="btn btn-custom-red btn-sm">Order Now</button>
-                                                    <button class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Addresses Tab -->
-                            <div id="addresses" class="tab-pane fade">
-                                <div class="mb-3">
-                                    <button class="btn btn-custom-red mb-3" data-bs-toggle="modal"
-                                        data-bs-target="#addAddressModal">
-                                        <i class="fas fa-plus"></i> Add New Address
-                                    </button>
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h6 class="d-flex align-items-center">
-                                                        <i class="fas fa-home me-2"></i> Home
-                                                        <span class="badge bg-primary ms-2">Default</span>
-                                                    </h6>
-                                                    <p class="mb-1">123 Delicious Street, Food City, FC 12345</p>
-                                                    <small class="text-muted">Phone: +92 300 1234567</small>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-outline-danger">Edit</button>
-                                                    <button class="btn btn-sm btn-outline-secondary">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h6 class="d-flex align-items-center">
-                                                        <i class="fas fa-building me-2"></i> Office
-                                                    </h6>
-                                                    <p class="mb-1">456 Business Ave, Work District, WD 67890</p>
-                                                    <small class="text-muted">Phone: +92 300 7654321</small>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-outline-danger">Edit</button>
-                                                    <button class="btn btn-sm btn-outline-secondary">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Add more favorite items here -->
                                 </div>
                             </div>
 
                             <!-- Rewards Tab -->
-                            <div id="rewards" class="tab-pane fade">
-                                <div class="mb-4">
-                                    <h5>Your Rewards Status</h5>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <i class="fas fa-medal fa-2x text-warning me-3"></i>
-                                                <div>
-                                                    <h6 class="mb-1">Silver Member</h6>
-                                                    <div class="progress reward-progress" style="width: 200px;">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%">
-                                                        </div>
-                                                    </div>
-                                                    <small class="text-muted">150 points to Gold status</small>
-                                                </div>
+                            <div class="tab-pane fade" id="rewards">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="mb-4">Your Rewards Progress</h5>
+                                        <div class="progress mb-3" style="height: 20px;">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                role="progressbar" style="width: 75%" aria-valuenow="75"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                75%
                                             </div>
-                                            <div class="row g-2">
-                                                <div class="col-md-4">
-                                                    <div class="border rounded p-2 text-center">
-                                                        <h6 class="mb-1">450</h6>
-                                                        <small class="text-muted">Points Balance</small>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="border rounded p-2 text-center">
-                                                        <h6 class="mb-1">3</h6>
-                                                        <small class="text-muted">Available Rewards</small>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="border rounded p-2 text-center">
-                                                        <h6 class="mb-1">50</h6>
-                                                        <small class="text-muted">Points This Month</small>
+                                        </div>
+                                        <div class="row g-4 mt-2">
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <i class="fas fa-gift fa-2x text-warning mb-2"></i>
+                                                        <h6>Free Dessert</h6>
+                                                        <p class="text-muted mb-2">200 points needed</p>
+                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Add more reward cards -->
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <h5>Available Rewards</h5>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h6>Free Dessert</h6>
-                                                    <p class="text-muted mb-2">Get any dessert free with your next order
-                                                    </p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span class="badge bg-warning">200 points</span>
-                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h6>30% Off Next Order</h6>
-                                                    <p class="text-muted mb-2">Save big on your next purchase</p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span class="badge bg-warning">400 points</span>
-                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <!-- Analytics Tab -->
+                            <div class="tab-pane fade" id="analytics">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="mb-4">Order History</h5>
+                                        <div class="order-chart-container">
+                                            <!-- Chart will be rendered here -->
                                         </div>
                                     </div>
                                 </div>
@@ -484,44 +803,191 @@
         </div>
     </div>
 
-    <!-- Add Address Modal -->
-    <div class="modal fade" id="addAddressModal" tabindex="-1">
+    <!-- Quick Actions Menu -->
+    <div class="quick-actions">
+        <div class="quick-actions-btn" onclick="toggleQuickActions()">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="quick-actions-menu p-3">
+            <div class="d-grid gap-2">
+                <button class="btn btn-sm btn-custom-red">
+                    <i class="fas fa-utensils me-2"></i>New Order
+                </button>
+                <!-- Previous code remains the same until the quick actions menu. Continuing from there: -->
+                <button class="btn btn-sm btn-custom-red">
+                    <i class="fas fa-history me-2"></i>Order History
+                </button>
+                <button class="btn btn-sm btn-custom-red">
+                    <i class="fas fa-headset me-2"></i>Support
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Address</h5>
+                    <h5 class="modal-title">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="editProfileForm">
                         <div class="mb-3">
-                            <label class="form-label">Address Label</label>
-                            <input type="text" class="form-control" placeholder="e.g., Home, Office">
+                            <label class="form-label">Profile Picture</label>
+                            <div class="d-flex align-items-center">
+                                <img src="/api/placeholder/100/100" class="rounded-circle me-3"
+                                    style="width: 60px; height: 60px;">
+                                <button type="button" class="btn btn-outline-secondary btn-sm">Change Photo</button>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Full Address</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" value="Anas Raheem">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="anas@example.com">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="Enter phone number">
-                        </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="defaultAddress">
-                            <label class="form-check-label" for="defaultAddress">Set as default address</label>
+                            <input type="tel" class="form-control" value="+92 300 1234567">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-custom-red">Save Address</button>
+                    <button type="button" class="btn btn-custom-red">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Preferences Modal -->
+    <div class="modal fade" id="preferencesModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Preferences</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h6>Notification Settings</h6>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">Order Updates</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">Promotional Offers</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">New Menu Items</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h6>Dietary Preferences</h6>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Vegetarian</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Spicy</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-custom-red">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div class="modal fade" id="notificationsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Order Delivered!</h6>
+                                <small class="text-muted">Just now</small>
+                            </div>
+                            <p class="mb-1">Your order #12344 has been delivered. Enjoy your meal!</p>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">New Reward Available</h6>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                            <p class="mb-1">You've unlocked a new reward! Check your rewards tab.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        // Toggle quick actions menu
+        function toggleQuickActions() {
+            const menu = document.querySelector('.quick-actions-menu');
+            menu.classList.toggle('show');
+        }
+
+        // Theme toggling functionality
+        function toggleTheme() {
+            document.body.setAttribute('data-theme',
+                document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+            );
+        }
+
+        // Show loading overlay
+        function showLoading() {
+            document.querySelector('.loading-overlay').style.display = 'flex';
+        }
+
+        // Hide loading overlay
+        function hideLoading() {
+            document.querySelector('.loading-overlay').style.display = 'none';
+        }
+
+        // Example of loading simulation
+        document.querySelectorAll('.btn-custom-red').forEach(button => {
+            button.addEventListener('click', function () {
+                if (!this.closest('.modal')) {
+                    showLoading();
+                    setTimeout(hideLoading, 1000);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
