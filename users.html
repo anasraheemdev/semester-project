@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Burst - Login/Register</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff4b2b;
+            --secondary-color: #ff8a00;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        .floating-home-btn {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s, box-shadow 0.2s;
+            touch-action: none;
+            /* Prevents scrolling while dragging on mobile */
+            user-select: none;
+            top: 20px;
+            left: 20px;
+        }
+
+        .floating-home-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .floating-home-btn:active {
+            transform: scale(0.95);
+        }
+
+        .floating-home-btn i {
+            font-size: 24px;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .floating-home-btn:hover i {
+            color: var(--secondary-color);
+        }
+
+        .floating-home-btn::after {
+            content: 'Home';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .floating-home-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Animation for button press */
+        .floating-home-btn.pressed {
+            transform: scale(0.9);
+        }
+
+        /* Style for when the button is being dragged */
+        .floating-home-btn.dragging {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .nav-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            background: white;
+            color: var(--secondary-color);
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .floating-food {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 6s infinite ease-in-out;
+            width: 40px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 768px) {
+            .floating-food {
+                width: 80px;
+            }
+        }
+
+        .food-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .food-2 {
+            top: 70%;
+            left: 5%;
+            animation-delay: 1.5s;
+        }
+
+        .food-3 {
+            top: 15%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .food-4 {
+            top: 60%;
+            right: 5%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            width: 95%;
+            max-width: 1000px;
+            min-height: 550px;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            display: flex;
+        }
+
+        .forms-container {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-register {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .login-register.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .form-title {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .form-control {
+            border-radius: 12px;
+            padding: 14px 20px;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 4px rgba(255, 75, 43, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .btn-auth {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.3);
+        }
+
+        .social-auth {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-auth a {
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            border: 2px solid #eee;
+            color: var(--primary-color);
+            background: white;
+            font-size: 1.2rem;
+        }
+
+        .social-auth a:hover {
+            transform: translateY(-3px);
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .overlay-container {
+            display: none;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .overlay-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 45%;
+            }
+
+            .auth-container {
+                flex-direction: row;
+            }
+        }
+
+        .overlay-panel h1 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .overlay-panel p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            padding: 12px 45px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .mobile-toggle {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .auth-container {
+                min-height: auto;
+                margin: 1rem;
+            }
+
+            .forms-container {
+                padding: 1.5rem;
+            }
+
+            .form-control {
+                padding: 12px 16px;
+            }
+
+            .btn-auth {
+                padding: 12px 30px;
+            }
+
+            .floating-food {
+                opacity: 0.4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-home-btn" id="floatingHomeBtn">
+        <a href="/index.html"><i class="fas fa-home"></i></a>
+    </div>
+
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/048/034/386/small_2x/fast-food-board-with-hamburger-french-fries-isolated-on-transparent-background-free-png.png"
+        alt="Burger" class="floating-food food-1">
+    <img src="https://petesfamouspizza.com/wp-content/uploads/2023/07/main-pizza.png" alt="Pizza"
+        class="floating-food food-2">
+    <img src="https://static.vecteezy.com/system/resources/previews/025/065/315/non_2x/fast-food-meal-with-ai-generated-free-png.png"
+        alt="Fries" class="floating-food food-3">
+    <img src="https://static.vecteezy.com/system/resources/previews/044/844/600/non_2x/homemade-fresh-tasty-burger-with-meat-and-cheese-classic-cheese-burger-and-vegetable-ai-generated-free-png.png"
+        alt="Cheeseburger" class="floating-food food-4">
+
+    <div class="main-container">
+        <div class="auth-container">
+            <div class="forms-container">
+                <div class="login-register active" id="loginForm">
+                    <h2 class="form-title">Welcome Back!</h2>
+                    <p class="form-subtitle">Sign in to continue your delicious journey with us!</p>
+                    <form>
+                        <input type="email" class="form-control" placeholder="Email address" required>
+                        <input type="password" class="form-control" placeholder="Password" required>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" style="color: var(--primary-color);">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-auth">Sign In</button>
+                        <div class="social-auth">
+                            <p class="text-muted mb-3">Or sign in with</p>
+                            <a href="#"><i class="fab fa-google"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </form>
+                    <div class="mobile-toggle">
+                        <p class="text-muted">Don't have an account?</p>
+                        <button type="button" class="btn btn-auth" id="mobileRegister">Sign Up</button>
+                    </div>
+                </div>
+
+                <div class="login-register" id="registerForm">
+                    <h2 class="form-title">Create Account</h2>
+                    <p class="form-subtitle">Join us and start your culinary adventure!</p>
+                    <form>
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                        <input type="email" class="form-control" placeholder="Email address" required>
+                        <input type="password" class="form-control" placeholder="Password" required>
+                        <input type="password" class="form-control" placeholder="Confirm Password" required>
+                        <button type="submit" class="btn btn-auth">Create Account</button>
+                        <div class="social-auth">
+                            <p class="text-muted mb-3">Or sign up with</p>
+                            <a href="#"><i class="fab fa-google"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </form>
+                    <div class="mobile-toggle">
+                        <p class="text-muted">Already have an account?</p>
+                        <button type="button" class="btn btn-auth" id="mobileLogin">Sign In</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay-panel" id="loginPanel">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <button type="button" class="btn btn-outline-light" id="desktopRegister">Sign Up</button>
+                </div>
+                <div class="overlay-panel" id="registerPanel" style="display: none;">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button type="button" class="btn btn-outline-light" id="desktopLogin">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // Floating Home Button Functionality
+        const floatingHomeBtn = document.getElementById('floatingHomeBtn');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        // Set button position
+        function setTranslate(xPos, yOffset) {
+            // Ensure the button stays within the viewport bounds
+            const buttonRect = floatingHomeBtn.getBoundingClientRect();
+            const maxX = window.innerWidth - buttonRect.width;
+            const maxY = window.innerHeight - buttonRect.height;
+
+            xPos = Math.min(Math.max(0, xPos), maxX);
+            yOffset = Math.min(Math.max(0, yOffset), maxY);
+
+            floatingHomeBtn.style.transform = `translate3d(${xPos}px, ${yOffset}px, 0)`;
+        }
+
+        // Handle drag start
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            if (e.target === floatingHomeBtn || e.target.parentNode === floatingHomeBtn) {
+                isDragging = true;
+                floatingHomeBtn.classList.add('dragging');
+            }
+        }
+
+        // Handle drag end
+        function dragEnd(e) {
+            if (!isDragging) return;
+
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+
+            floatingHomeBtn.classList.remove('dragging');
+
+            // Save position to localStorage
+            localStorage.setItem('homeButtonPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+        }
+
+        // Handle dragging
+        function drag(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+
+            if (e.type === "touchmove") {
+                currentX = e.touches[0].clientX - initialX;
+                currentY = e.touches[0].clientY - initialY;
+            } else {
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+            }
+
+            xOffset = currentX;
+            yOffset = currentY;
+            setTranslate(currentX, currentY);
+        }
+
+        // Add click functionality
+        floatingHomeBtn.addEventListener('click', (e) => {
+            if (!isDragging) {
+                floatingHomeBtn.classList.add('pressed');
+                setTimeout(() => {
+                    floatingHomeBtn.classList.remove('pressed');
+                    // Add your home navigation logic here
+                    console.log('Navigating to home...');
+                    // window.location.href = '/home'; // Uncomment and update with your home page URL
+                }, 200);
+            }
+        });
+
+        // Restore position from localStorage
+        window.addEventListener('load', () => {
+            const savedPosition = localStorage.getItem('homeButtonPosition');
+            if (savedPosition) {
+                const position = JSON.parse(savedPosition);
+                xOffset = position.x;
+                yOffset = position.y;
+                setTranslate(position.x, position.y);
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            setTranslate(xOffset, yOffset);
+        });
+
+        // Event Listeners for drag functionality
+        // Touch events
+        floatingHomeBtn.addEventListener('touchstart', dragStart, { passive: false });
+        floatingHomeBtn.addEventListener('touchend', dragEnd, { passive: false });
+        floatingHomeBtn.addEventListener('touchmove', drag, { passive: false });
+
+        // Mouse events
+        floatingHomeBtn.addEventListener('mousedown', dragStart);
+        floatingHomeBtn.addEventListener('mouseup', dragEnd);
+        floatingHomeBtn.addEventListener('mouseleave', dragEnd);
+        document.addEventListener('mousemove', drag);
+
+        // Prevent default touch behaviors
+        document.body.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginPanel = document.getElementById('loginPanel');
+            const registerPanel = document.getElementById('registerPanel');
+
+            // Desktop toggle buttons
+            const desktopRegister = document.getElementById('desktopRegister');
+            const desktopLogin = document.getElementById('desktopLogin');
+
+            // Mobile toggle buttons
+            const mobileRegister = document.getElementById('mobileRegister');
+            const mobileLogin = document.getElementById('mobileLogin');
+
+            function toggleForms(showRegister) {
+                if (showRegister) {
+                    loginForm.classList.remove('active');
+                    registerForm.classList.add('active');
+                    if (window.innerWidth >= 768) {
+                        loginPanel.style.display = 'none';
+                        registerPanel.style.display = 'block';
+                    }
+                } else {
+                    registerForm.classList.remove('active');
+                    loginForm.classList.add('active');
+                    if (window.innerWidth >= 768) {
+                        registerPanel.style.display = 'none';
+                        loginPanel.style.display = 'block';
+                    }
+                }
+            }
+
+            // Desktop toggle event listeners
+            desktopRegister?.addEventListener('click', () => toggleForms(true));
+            desktopLogin?.addEventListener('click', () => toggleForms(false));
+
+            // Mobile toggle event listeners
+            mobileRegister?.addEventListener('click', () => toggleForms(true));
+            mobileLogin?.addEventListener('click', () => toggleForms(false));
+
+            // Form validation
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Remove any existing validation messages
+                    form.querySelectorAll('.validation-message').forEach(msg => msg.remove());
+
+                    let isValid = true;
+
+                    // Validate each required field
+                    form.querySelectorAll('input[required]').forEach(input => {
+                        if (!input.value.trim()) {
+                            isValid = false;
+                            showError(input, 'This field is required');
+                        } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                            isValid = false;
+                            showError(input, 'Please enter a valid email address');
+                        }
+                    });
+
+                    // Additional password validation for register form
+                    if (form.closest('#registerForm')) {
+                        const password = form.querySelector('input[type="password"]');
+                        const confirmPassword = form.querySelectorAll('input[type="password"]')[1];
+
+                        if (password.value !== confirmPassword.value) {
+                            isValid = false;
+                            showError(confirmPassword, 'Passwords do not match');
+                        }
+
+                        if (password.value.length < 8) {
+                            isValid = false;
+                            showError(password, 'Password must be at least 8 characters long');
+                        }
+                    }
+
+                    if (isValid) {
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'alert alert-success mt-3';
+                        successMessage.textContent = form.closest('#loginForm') ?
+                            'Login successful!' : 'Account created successfully!';
+                        form.appendChild(successMessage);
+
+                        // Reset form after success
+                        setTimeout(() => {
+                            form.reset();
+                            successMessage.remove();
+                        }, 3000);
+                    }
+                });
+            });
+
+            // Helper functions
+            function showError(input, message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'validation-message text-danger small mt-1';
+                errorDiv.textContent = message;
+                input.parentNode.insertBefore(errorDiv, input.nextSibling);
+                input.classList.add('is-invalid');
+
+                // Remove error when input changes
+                input.addEventListener('input', () => {
+                    errorDiv.remove();
+                    input.classList.remove('is-invalid');
+                });
+            }
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Initialize floating food animations
+            const floatingFoods = document.querySelectorAll('.floating-food');
+            floatingFoods.forEach(food => {
+                food.style.opacity = '0';
+                setTimeout(() => {
+                    food.style.transition = 'opacity 0.5s ease-in';
+                    food.style.opacity = window.innerWidth >= 768 ? '0.8' : '0.4';
+                }, 100);
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                floatingFoods.forEach(food => {
+                    food.style.opacity = window.innerWidth >= 768 ? '0.8' : '0.4';
+                });
+            });
+
+            // Home button functionality
+            document.querySelector('.btn-home').addEventListener('click', (e) => {
+                e.preventDefault();
+                // Add your home navigation logic here
+                console.log('Navigating to home...');
+                // window.location.href = '/home'; // Uncomment and update with your home page URL
+            });
+        });
+    </script>
+</body>
+
+</html>

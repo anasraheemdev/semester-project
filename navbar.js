@@ -77,9 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
           </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="services.html">Services</a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="About.html">About</a>
         </li>
@@ -104,6 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
             data-bs-target="#cartModal"
           >
             <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div
+            class="cart-icon"
+          >
+            <a href="users.html" style="color:red;"><i class="fas fa-user"></i></a>
           </div>
         </li>
       </ul>
