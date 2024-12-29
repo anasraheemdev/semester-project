@@ -352,7 +352,7 @@
             color: gold;
         }
 
-        /* Optional: Add a subtle transition effect */
+
         .profile-image {
             transition: transform 0.2s;
         }
@@ -367,8 +367,8 @@
     <!-- Enhanced Navigation -->
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand animate__animated animate__fadeIn" href="#">
-                <i class="fas fa-pizza-slice me-2"></i>Bite Burst
+            <a class="navbar-brand animate__animated animate__fadeIn" href="index.html" style="font-weight: 600;">
+                <i class="fas fa-utensils me-2 me-2"></i>Bite Burst
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -615,7 +615,7 @@
             <div class="col-lg-8">
                 <div class="card dashboard-card">
                     <div class="card-body">
-                        <!-- Enhanced Navigation Tabs -->
+
                         <ul class="nav nav-pills mb-4" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#orders">
@@ -687,7 +687,7 @@
 
                                         <!-- Order Details -->
                                         <div class="mt-3">
-                                            <p class="mb-2"><strong>Items:</strong> 1x Crown Crust Pizza, 2x Classic
+                                            <p class="mb-2"><strong>Items:</strong> 1x Crreamy Tikka Pizza, 2x Classic
                                                 Fries</p>
                                             <p class="mb-2"><strong>Total:</strong> Rs. 1,500</p>
                                             <div class="d-flex justify-content-between align-items-center">
@@ -735,15 +735,16 @@
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <div class="card menu-item-card">
-                                            <img src="/api/placeholder/400/200" class="card-img-top" alt="Crown Crust">
+                                            <img src="https://png.pngtree.com/png-vector/20240208/ourmid/pngtree-cheese-and-chicken-pizza-png-image_11713322.png"
+                                                class="card-img-top" alt="Crreamy Tikka">
                                             <div class="menu-item-overlay">
-                                                <h5 class="mb-2">Crown Crust</h5>
+                                                <h5 class="mb-2">Crreamy Tikka</h5>
                                                 <p class="mb-3">Loaded with cheese and your favorite toppings</p>
                                                 <button class="btn btn-sm btn-light">Order Now</button>
                                             </div>
                                             <div class="card-body">
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <h5 class="card-title mb-0">Crown Crust</h5>
+                                                    <h5 class="card-title mb-0">Crreamy Tikka</h5>
                                                     <span class="text-danger">
                                                         <i class="fas fa-heart"></i>
                                                     </span>
@@ -787,14 +788,225 @@
 
                             <!-- Analytics Tab -->
                             <div class="tab-pane fade" id="analytics">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="mb-4">Order History</h5>
-                                        <div class="order-chart-container">
-                                            <!-- Chart will be rendered here -->
+                                <!-- <div class="card mb-4"> -->
+                                <!-- <div class="card-body"> -->
+                                <!-- <h5 class="mb-4">Order History</h5> -->
+                                <!-- <div class="order-chart-container"> -->
+                                <!-- Chart will be rendered here -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+
+
+
+
+
+
+
+
+                                <!-- First include required CDN links -->
+                                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+                                    rel="stylesheet">
+                                <link
+                                    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+                                    rel="stylesheet">
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <div class="container mt-4">
+                                    <div class="card shadow-sm">
+                                        <div
+                                            class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                                            <h3 class="mb-0">Order History</h3>
+                                            <div class="analytics-badges">
+                                                <span class="badge bg-warning text-dark me-2">
+                                                    <i class="bi bi-graph-up"></i> Total Orders: <span
+                                                        id="totalOrders">0</span>
+                                                </span>
+                                                <span class="badge bg-warning text-dark">
+                                                    <i class="bi bi-cash"></i> Revenue: $<span
+                                                        id="totalRevenue">0</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <!-- Analytics Charts -->
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <div class="bg-light p-3 rounded">
+                                                        <h5 class="text-danger">Monthly Orders</h5>
+                                                        <canvas id="orderChart" height="200"></canvas>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="bg-light p-3 rounded">
+                                                        <h5 class="text-danger">Revenue Trend</h5>
+                                                        <canvas id="revenueChart" height="200"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Order Table -->
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="table-danger">
+                                                        <tr>
+                                                            <th>Order ID</th>
+                                                            <th>Date</th>
+                                                            <th>Items</th>
+                                                            <th>Status</th>
+                                                            <th>Total</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="orderTableBody">
+                                                        <!-- Sample Order Row -->
+                                                        <tr>
+                                                            <td>#12345</td>
+                                                            <td>2024-12-29</td>
+                                                            <td>3 items</td>
+                                                            <td><span class="badge bg-success">Delivered</span></td>
+                                                            <td>$99.99</td>
+                                                            <td>
+                                                                <button class="btn btn-warning btn-sm"
+                                                                    onclick="viewDetails('12345')">View Details</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <!-- Pagination -->
+                                            <nav aria-label="Order history pagination">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link text-danger" href="#"
+                                                            tabindex="-1">Previous</a>
+                                                    </li>
+                                                    <li class="page-item active">
+                                                        <a class="page-link bg-danger border-danger" href="#">1</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link text-danger" href="#">2</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link text-danger" href="#">3</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link text-danger" href="#">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                    // Wait for all resources to load
+                                    window.addEventListener('load', function () {
+                                        // Sample data
+                                        const monthlyData = {
+                                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                                            orders: [65, 59, 80, 81, 56, 55],
+                                            revenue: [6500, 5900, 8000, 8100, 5600, 5500]
+                                        };
+
+                                        try {
+                                            // Initialize Orders Chart
+                                            const orderCtx = document.getElementById('orderChart');
+                                            if (orderCtx) {
+                                                new Chart(orderCtx, {
+                                                    type: 'bar',
+                                                    data: {
+                                                        labels: monthlyData.labels,
+                                                        datasets: [{
+                                                            label: 'Number of Orders',
+                                                            data: monthlyData.orders,
+                                                            backgroundColor: '#dc3545',
+                                                            borderColor: '#dc3545',
+                                                            borderWidth: 1
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        responsive: true,
+                                                        scales: {
+                                                            y: {
+                                                                beginAtZero: true
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+
+                                            // Initialize Revenue Chart
+                                            const revenueCtx = document.getElementById('revenueChart');
+                                            if (revenueCtx) {
+                                                new Chart(revenueCtx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: monthlyData.labels,
+                                                        datasets: [{
+                                                            label: 'Revenue ($)',
+                                                            data: monthlyData.revenue,
+                                                            borderColor: '#ffc107',
+                                                            backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                                                            fill: true
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        responsive: true,
+                                                        scales: {
+                                                            y: {
+                                                                beginAtZero: true
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+
+                                            // Update analytics summary
+                                            const totalOrdersElement = document.getElementById('totalOrders');
+                                            const totalRevenueElement = document.getElementById('totalRevenue');
+
+                                            if (totalOrdersElement) {
+                                                totalOrdersElement.textContent = monthlyData.orders.reduce((a, b) => a + b, 0);
+                                            }
+                                            if (totalRevenueElement) {
+                                                totalRevenueElement.textContent = monthlyData.revenue.reduce((a, b) => a + b, 0).toLocaleString();
+                                            }
+                                        } catch (error) {
+                                            console.error('Error initializing charts:', error);
+                                        }
+                                    });
+
+                                    // View Details function
+                                    function viewDetails(orderId) {
+                                        alert(`Viewing details for order ${orderId}`);
+                                        // Add your detail view logic here
+                                    }
+                                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
