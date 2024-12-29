@@ -1,747 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYle0dIli_y0vLXFDGa-BzZNqmaKYsE7za1VTJvkVOOnOAN8HazExw2En3WAQLN7l2cUlndTfoP4YZLgRXNiZ5fOup0ph4nkoCTheqUtbFHuxM9aJECTc_QK_AZJKPOsUrW3Wk4SWJYCF8i0uizmrQg5RkiAm8gmWX0DHTKp-MWRxenYPPq6_n7v9Gg0I/s320/pngwing.com%20(1).png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYle0dIli_y0vLXFDGa-BzZNqmaKYsE7za1VTJvkVOOnOAN8HazExw2En3WAQLN7l2cUlndTfoP4YZLgRXNiZ5fOup0ph4nkoCTheqUtbFHuxM9aJECTc_QK_AZJKPOsUrW3Wk4SWJYCF8i0uizmrQg5RkiAm8gmWX0DHTKp-MWRxenYPPq6_n7v9Gg0I/s320/pngwing.com%20(1).png"
+        type="image/x-icon">
     <title>Bite Burst</title>
     <style>
-      :root {
-          --primary-red: #ff3b3b;
-          --primary-yellow: #ffc107;
-      }
-      
-      body {
-          background-image: url('/api/placeholder/20/20');
-          background-repeat: repeat;
-          background-size: 20px;
-          background-color: #fff9f9;
-      }
-  
-      .dropdown-menu {
-    width: 100%;
-    padding: 20px;
-}
+        :root {
+            --primary-red: #ff3b3b;
+            --primary-yellow: #ffc107;
+        }
 
-.dropdown-menu .container {
-    max-width: 1000px;
-}
+        body {
+            background-image: url('/api/placeholder/20/20');
+            background-repeat: repeat;
+            background-size: 20px;
+            background-color: #fff9f9;
+        }
 
-.dropdown-header {
-    font-weight: bold;
-    color: var(--primary-red);
-}
+        .dropdown-menu {
+            width: 100%;
+            padding: 20px;
+        }
 
-.dropdown-item:hover {
-    background-color: var(--primary-red);
-    color: white;
-}
-      .brand-red { color: var(--primary-red); }
-      .brand-yellow { color: var(--primary-yellow); }
-      .bg-brand-red { background-color: var(--primary-red); }
-  
-      /* Floating Food Icons Animation */
-      .floating-icons {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          overflow: hidden;
-      }
-  
-      .food-icon {
-          position: absolute;
-          font-size: 2rem;
-          opacity: 0.2;
-          animation: float 15s linear infinite;
-      }
-  
-      @keyframes float {
-          0% {
-              transform: translateY(100vh) rotate(0deg);
-              opacity: 0;
-          }
-          50% {
-              opacity: 0.2;
-          }
-          100% {
-              transform: translateY(-100px) rotate(360deg);
-              opacity: 0;
-          }
-      }
-  
-      .hero-section {
-          background: linear-gradient(135deg, var(--primary-red), #ff6b6b);
-          position: relative;
-          overflow: hidden;
-      }
-  
-      .hero-pattern {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-image: url('/api/placeholder/50/50');
-          opacity: 0.1;
-      }
-  
-      .contact-icon {
-          font-size: 2.5rem;
-          transition: all 0.3s ease;
-      }
-  
-      .contact-card {
-          border: none;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s ease;
-          cursor: pointer;
-          background: white;
-          overflow: hidden;
-          position: relative;
-      }
-  
-      .contact-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: 0.5s;
-      }
-  
-      .contact-card:hover::before {
-          left: 100%;
-      }
-  
-      .contact-card:hover {
-          transform: translateY(-10px) scale(1.02);
-          box-shadow: 0 15px 30px rgba(255, 59, 59, 0.2);
-      }
-  
-      .contact-card:hover .contact-icon {
-          transform: scale(1.2) rotate(10deg);
-      }
-  
-      .custom-btn {
-          background: var(--primary-red);
-          color: white;
-          border: none;
-          padding: 12px 30px;
-          border-radius: 25px;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-      }
-  
-      .custom-btn::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: 0.5s;
-      }
-  
-      .custom-btn:hover::before {
-          left: 100%;
-      }
-  
-      .custom-btn:hover {
-          background: #e63535;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
-      }
-  
-      .form-control {
-          border-radius: 15px;
-          padding: 12px 20px;
-          transition: all 0.3s ease;
-      }
-  
-      .form-control:focus {
-          border-color: var(--primary-red);
-          box-shadow: 0 0 0 0.2rem rgba(255, 59, 59, 0.25);
-          transform: translateY(-2px);
-      }
-  
-      .satisfaction-emoji {
-          font-size: 2rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          opacity: 0.5;
-      }
-  
-      .satisfaction-emoji:hover, .satisfaction-emoji.active {
-          transform: scale(1.2);
-          opacity: 1;
-      }
-  
-      .contact-time-badge {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: var(--primary-yellow);
-          color: black;
-          padding: 5px 10px;
-          border-radius: 15px;
-          font-size: 0.8rem;
-          transform: rotate(3deg);
-      }
-  
-      /* Food ordering animation */
-      .order-animation {
-          position: fixed;
-          pointer-events: none;
-          z-index: 1000;
-          font-size: 2rem;
-          transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-  </style>
+        .dropdown-menu .container {
+            max-width: 1000px;
+        }
+
+        .dropdown-header {
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-red);
+            color: white;
+        }
+
+        .brand-red {
+            color: var(--primary-red);
+        }
+
+        .brand-yellow {
+            color: var(--primary-yellow);
+        }
+
+        .bg-brand-red {
+            background-color: var(--primary-red);
+        }
+
+        /* Floating Food Icons Animation */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .food-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.2;
+            animation: float 15s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-red), #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/50/50');
+            opacity: 0.1;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 59, 59, 0.2);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .custom-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .custom-btn:hover::before {
+            left: 100%;
+        }
+
+        .custom-btn:hover {
+            background: #e63535;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+        }
+
+        .form-control {
+            border-radius: 15px;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 0.2rem rgba(255, 59, 59, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .satisfaction-emoji {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .satisfaction-emoji:hover,
+        .satisfaction-emoji.active {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        .contact-time-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-yellow);
+            color: black;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transform: rotate(3deg);
+        }
+
+        @media (max-width: 768px) {
+           .tcc{
+                margin-top: 80px !important;
+           }
+        }
+        /* Food ordering animation */
+        .order-animation {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 2rem;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    </style>
 
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Awesome for Icons -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
 
     <!-- Animation Library -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="stylez.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Enhanced Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-      <div class="container">
-        <!-- Brand Logo -->
-        <a class="navbar-brand" href="#">
-          <i class="fas fa-utensils me-2"></i>Bite Burst
-        </a>
-
-        <!-- Responsive Toggle -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navigation Menu -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-
-            <!-- Mega Menu Dropdown -->
-            <!-- Mega Menu Dropdown -->
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Menu
-    </a>
-    <ul class="dropdown-menu">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h6 class="dropdown-header">Burgers</h6>
-                    <li><a class="dropdown-item" href="burgers.html">Zinger Burger</a></li>
-                    <li><a class="dropdown-item" href="burgers.html">Mighty Burger</a></li>
-                    <li><a class="dropdown-item" href="burgers.html">Beef Burger</a></li>
-                    <li><a class="dropdown-item" href="burgers.html">Cheese Burger</a></li>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="dropdown-header">Pizzas</h6>
-                    <li><a class="dropdown-item" href="pizza.html">Chicken tikka</a></li>
-                    <li><a class="dropdown-item" href="pizza.html">Cheese</a></li>
-                    <li><a class="dropdown-item" href="pizza.html">Fajita</a></li>
-                    <li><a class="dropdown-item" href="pizza.html">BBQ Chicken</a></li>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="dropdown-header">Pasta and Fries</h6>
-                    <li><a class="dropdown-item" href="pasta-fries.html">Pastas</a></li>
-                    <li><a class="dropdown-item" href="pasta-fries.html">Fries</a></li>
-                    <li><a class="dropdown-item" href="pasta-fries.html">Italian Pasta</a></li>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="dropdown-header">Chef's Special</h6>
-                    <li><a class="dropdown-item" href="chefs-special.html">Our Menu</a></li>
-                    <li><a class="dropdown-item" href="chefs-special.html">Weekly Deals</a></li>
-                </div>
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-utensils me-2"></i>Bite Burst
+            </a>
+
+            <!-- Responsive Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <!-- Mega Menu Dropdown -->
+                    <!-- Mega Menu Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Menu
+                        </a>
+                        <ul class="dropdown-menu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header">Burgers</h6>
+                                        <li><a class="dropdown-item" href="burgers.html">Zinger Burger</a></li>
+                                        <li><a class="dropdown-item" href="burgers.html">Mighty Burger</a></li>
+                                        <li><a class="dropdown-item" href="burgers.html">Beef Burger</a></li>
+                                        <li><a class="dropdown-item" href="burgers.html">Cheese Burger</a></li>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header">Pizzas</h6>
+                                        <li><a class="dropdown-item" href="pizza.html">Chicken tikka</a></li>
+                                        <li><a class="dropdown-item" href="pizza.html">Cheese</a></li>
+                                        <li><a class="dropdown-item" href="pizza.html">Fajita</a></li>
+                                        <li><a class="dropdown-item" href="pizza.html">BBQ Chicken</a></li>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header">Pasta and Fries</h6>
+                                        <li><a class="dropdown-item" href="pasta-fries.html">Pastas</a></li>
+                                        <li><a class="dropdown-item" href="pasta-fries.html">Fries</a></li>
+                                        <li><a class="dropdown-item" href="pasta-fries.html">Italian Pasta</a></li>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header">Chef's Special</h6>
+                                        <li><a class="dropdown-item" href="chefs-special.html">Our Menu</a></li>
+                                        <li><a class="dropdown-item" href="chefs-special.html">Weekly Deals</a></li>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Right-side Icons -->
+                <ul class="navbar-nav">
+                    <li class="nav-item cart-search">
+                        <div class="search-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="cart-icon" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="cart-icon">
+                            <a href="users.html" style="color:red;"><i class="fas fa-user"></i></a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-    </ul>
-</li>
-
-            
-            <li class="nav-item">
-              <a class="nav-link" href="About.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
-
-          <!-- Right-side Icons -->
-          <ul class="navbar-nav">
-            <li class="nav-item cart-search">
-              <div
-                class="search-icon"
-                data-bs-toggle="modal"
-                data-bs-target="#searchModal"
-              >
-                <i class="fas fa-search"></i>
-              </div>
-              <div
-                class="cart-icon"
-                data-bs-toggle="modal"
-                data-bs-target="#cartModal"
-              >
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-              <div
-            class="cart-icon"
-          >
-            <a href="users.html" style="color:red;"><i class="fas fa-user"></i></a>
-          </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </nav>
 
     <!-- Search Modal -->
     <div class="modal fade" id="searchModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Search Our Menu</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search dishes, cuisines..."
-            />
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary">Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-<!-- Floating Food Icons -->
-<div class="floating-icons" id="floatingIcons"></div>
-
-<div class="container-fluid p-0">
-<!-- Hero Section -->
-<div class="hero-section text-white py-5 animate__animated animate__fadeIn">
-    <div class="hero-pattern"></div>
-    <div class="container position-relative">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">
-                    <span class="brand-yellow">Hungry</span> for Connection?
-                </h1>
-                <p class="lead">We're cooking up something special just for you! Let's make your experience even more delicious.</p>
-            </div>
-            <div class="col-lg-6 text-center">
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/great-chef-producing-delicious-food-illustration-download-in-svg-png-gif-file-formats--counter-logo-holding-tray-cooking-pack-drink-illustrations-7920607.png?f=webp" alt="Delicious food illustration" class="img-fluid rounded-circle shadow-lg">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Contact Cards -->
-<div class="container py-5">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp">
-                <span class="contact-time-badge">24/7 Available</span>
-                <div class="card-body">
-                    <i class="fas fa-phone contact-icon brand-red mb-4"></i>
-                    <h4>Order Now</h4>
-                    <p class="text-muted">Hot & Fresh Delivery</p>
-                    <p class="brand-red fw-bold">+1 (555) 123-4567</p>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Our Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                <span class="contact-time-badge">Quick Response</span>
-                <div class="card-body">
-                    <i class="fas fa-utensils contact-icon brand-red mb-4"></i>
-                    <h4>Catering</h4>
-                    <p class="text-muted">Special Events & Parties</p>
-                    <p class="brand-red fw-bold">events@fastfood.com</p>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Search dishes, cuisines..." />
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                <span class="contact-time-badge">Visit Us</span>
-                <div class="card-body">
-                    <i class="fas fa-store contact-icon brand-red mb-4"></i>
-                    <h4>Dine In</h4>
-                    <p class="text-muted">Experience the Ambiance</p>
-                    <p class="brand-red fw-bold">123 Food Street, NY 10001</p>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Search</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Contact Form -->
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-lg p-4 animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
-                <h3 class="text-center mb-4">Share Your Cravings</h3>
-                <form id="contactForm">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+
+    <!-- Floating Food Icons -->
+    <div class="floating-icons" id="floatingIcons"></div>
+
+    <div class="container-fluid p-0">
+        <!-- Hero Section -->
+        <div class="hero-section text-white py-5 tcc animate__animated animate__fadeIn">
+            <div class="hero-pattern"></div>
+            <div class="container position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-4">
+                            <span class="brand-yellow">Hungry</span> for Connection?
+                        </h1>
+                        <p class="lead">We're cooking up something special just for you! Let's make your experience even
+                            more delicious.</p>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/great-chef-producing-delicious-food-illustration-download-in-svg-png-gif-file-formats--counter-logo-holding-tray-cooking-pack-drink-illustrations-7920607.png?f=webp"
+                            alt="Delicious food illustration" class="img-fluid rounded-circle shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp">
+                        <span class="contact-time-badge">24/7 Available</span>
+                        <div class="card-body">
+                            <i class="fas fa-phone contact-icon brand-red mb-4"></i>
+                            <h4>Order Now</h4>
+                            <p class="text-muted">Hot & Fresh Delivery</p>
+                            <p class="brand-red fw-bold">+1 (555) 123-4567</p>
                         </div>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp"
+                        style="animation-delay: 0.2s">
+                        <span class="contact-time-badge">Quick Response</span>
+                        <div class="card-body">
+                            <i class="fas fa-utensils contact-icon brand-red mb-4"></i>
+                            <h4>Catering</h4>
+                            <p class="text-muted">Special Events & Parties</p>
+                            <p class="brand-red fw-bold">events@fastfood.com</p>
                         </div>
-                        <div class="col-12">
-                            <select class="form-control">
-                                <option value="">Select Topic</option>
-                                <option value="feedback">Food Feedback</option>
-                                <option value="catering">Catering Query</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="other">Other</option>
-                            </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card card text-center p-4 animate__animated animate__fadeInUp"
+                        style="animation-delay: 0.4s">
+                        <span class="contact-time-badge">Visit Us</span>
+                        <div class="card-body">
+                            <i class="fas fa-store contact-icon brand-red mb-4"></i>
+                            <h4>Dine In</h4>
+                            <p class="text-muted">Experience the Ambiance</p>
+                            <p class="brand-red fw-bold">123 Food Street, NY 10001</p>
                         </div>
-                        <div class="col-12">
-                            <textarea class="form-control" rows="5" placeholder="Tell us what's cooking in your mind..." required></textarea>
-                        </div>
-                        <div class="col-12">
-                            <p class="text-center mb-2">Rate your last experience with us</p>
-                            <div class="d-flex justify-content-center gap-3 mb-3">
-                                <span class="satisfaction-emoji" data-rating="1">😔</span>
-                                <span class="satisfaction-emoji" data-rating="2">😐</span>
-                                <span class="satisfaction-emoji" data-rating="3">😊</span>
-                                <span class="satisfaction-emoji" data-rating="4">😋</span>
-                                <span class="satisfaction-emoji" data-rating="5">🤩</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg p-4 animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
+                        <h3 class="text-center mb-4">Share Your Cravings</h3>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <select class="form-control">
+                                        <option value="">Select Topic</option>
+                                        <option value="feedback">Food Feedback</option>
+                                        <option value="catering">Catering Query</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="5"
+                                        placeholder="Tell us what's cooking in your mind..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <p class="text-center mb-2">Rate your last experience with us</p>
+                                    <div class="d-flex justify-content-center gap-3 mb-3">
+                                        <span class="satisfaction-emoji" data-rating="1">😔</span>
+                                        <span class="satisfaction-emoji" data-rating="2">😐</span>
+                                        <span class="satisfaction-emoji" data-rating="3">😊</span>
+                                        <span class="satisfaction-emoji" data-rating="4">😋</span>
+                                        <span class="satisfaction-emoji" data-rating="5">🤩</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="custom-btn">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section with Fun Facts -->
+        <div class="container-fluid p-0 mb-5">
+            <div class="row g-0">
+                <div class="col-12 position-relative">
+                    <iframe class="img-fluid w-100" style="height: 50vh;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.81110508803!2d73.0220790747983!3d33.7138364355249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbe5967d48243%3A0xcb2c90c562c4687e!2sAir%20University%20Islamabad!5e0!3m2!1sen!2s!4v1734569024195!5m2!1sen!2s"
+                        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: rgba(0,0,0,0.7);">
+                        <div class="container">
+                            <div class="row text-white text-center">
+                                <div class="col-md-3">
+                                    <h4 class="brand-yellow">1000+</h4>
+                                    <p>Happy Customers</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 class="brand-yellow">50+</h4>
+                                    <p>Menu Items</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 class="brand-yellow">30</h4>
+                                    <p>Minutes Delivery</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 class="brand-yellow">4.8★</h4>
+                                    <p>Customer Rating</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="custom-btn">
-                                <i class="fas fa-paper-plane me-2"></i>Send Message
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Map Section with Fun Facts -->
-<div class="container-fluid p-0 mb-5">
-    <div class="row g-0">
-        <div class="col-12 position-relative">
-            <iframe class="img-fluid w-100" style="height: 50vh;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.81110508803!2d73.0220790747983!3d33.7138364355249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbe5967d48243%3A0xcb2c90c562c4687e!2sAir%20University%20Islamabad!5e0!3m2!1sen!2s!4v1734569024195!5m2!1sen!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: rgba(0,0,0,0.7);">
-                <div class="container">
-                    <div class="row text-white text-center">
-                        <div class="col-md-3">
-                            <h4 class="brand-yellow">1000+</h4>
-                            <p>Happy Customers</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h4 class="brand-yellow">50+</h4>
-                            <p>Menu Items</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h4 class="brand-yellow">30</h4>
-                            <p>Minutes Delivery</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h4 class="brand-yellow">4.8★</h4>
-                            <p>Customer Rating</p>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
-<!-- footer section here -->
+        <!-- footer section here -->
 
-<!-- Footer Section -->
-<footer class="container-fluid bg-dark py-5">
-    <div class="container">
-        <div class="row text-warning">
-            <!-- Brand and Description Column -->
-            <div class="col-md-4 mb-4">
-                <h4 class="mb-3 text-warning">
-                    <i class="fas fa-utensils me-2"></i>Bite Burst
-                </h4>
-                <p>
-                    Your ultimate destination for mouthwatering meals and unforgettable dining experiences. We're passionate about serving fresh, high-quality food that brings joy to your table.
-                </p>
-                <div class="social-links mt-3">
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-outline-warning"><i class="fab fa-linkedin"></i></a>
+        <!-- Footer Section -->
+        <footer class="container-fluid bg-dark py-5">
+            <div class="container">
+                <div class="row text-warning">
+                    <!-- Brand and Description Column -->
+                    <div class="col-md-4 mb-4">
+                        <h4 class="mb-3 text-warning">
+                            <i class="fas fa-utensils me-2"></i>Bite Burst
+                        </h4>
+                        <p>
+                            Your ultimate destination for mouthwatering meals and unforgettable dining experiences.
+                            We're passionate about serving fresh, high-quality food that brings joy to your table.
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-warning"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Column -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="mb-3 text-warning">Quick Links</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#home" class="text-warning text-decoration-none d-block">Home</a></li>
+                                    <li><a href="#menu" class="text-warning text-decoration-none d-block">Menu</a></li>
+                                    <li><a href="#services"
+                                            class="text-warning text-decoration-none d-block">Services</a></li>
+                                    <li><a href="#special-deals"
+                                            class="text-warning text-decoration-none d-block">Special Deals</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#about" class="text-warning text-decoration-none d-block">About Us</a>
+                                    </li>
+                                    <li><a href="#contact" class="text-warning text-decoration-none d-block">Contact</a>
+                                    </li>
+                                    <li><a href="#" class="text-warning text-decoration-none d-block">Privacy Policy</a>
+                                    </li>
+                                    <li><a href="#" class="text-warning text-decoration-none d-block">Terms of
+                                            Service</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter and Contact Column -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="mb-3 text-warning">Stay Connected</h5>
+                        <p class="mb-3">
+                            Subscribe to our newsletter for exclusive deals and updates!
+                        </p>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control text-warning bg-dark border-warning"
+                                    placeholder="Enter your email" required>
+                                <button class="btn btn-warning" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                        <div class="contact-info mt-4">
+                            <p class="mb-2">
+                                <i class="fas fa-map-marker-alt text-warning me-2"></i>123 Delicious Street, Food City
+                            </p>
+                            <p class="mb-2">
+                                <i class="fas fa-phone text-warning me-2"></i>(555) 123-4567
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope text-warning me-2"></i>support@deliciouseats.com
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Quick Links Column -->
-            <div class="col-md-4 mb-4">
-                <h5 class="mb-3 text-warning">Quick Links</h5>
-                <div class="row">
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#home" class="text-warning text-decoration-none d-block">Home</a></li>
-                            <li><a href="#menu" class="text-warning text-decoration-none d-block">Menu</a></li>
-                            <li><a href="#services" class="text-warning text-decoration-none d-block">Services</a></li>
-                            <li><a href="#special-deals" class="text-warning text-decoration-none d-block">Special Deals</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#about" class="text-warning text-decoration-none d-block">About Us</a></li>
-                            <li><a href="#contact" class="text-warning text-decoration-none d-block">Contact</a></li>
-                            <li><a href="#" class="text-warning text-decoration-none d-block">Privacy Policy</a></li>
-                            <li><a href="#" class="text-warning text-decoration-none d-block">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Newsletter and Contact Column -->
-            <div class="col-md-4 mb-4">
-                <h5 class="mb-3 text-warning">Stay Connected</h5>
-                <p class="mb-3">
-                    Subscribe to our newsletter for exclusive deals and updates!
-                </p>
-                <form>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control text-warning bg-dark border-warning" placeholder="Enter your email" required>
-                        <button class="btn btn-warning" type="submit">Subscribe</button>
-                    </div>
-                </form>
-                <div class="contact-info mt-4">
-                    <p class="mb-2">
-                        <i class="fas fa-map-marker-alt text-warning me-2"></i>123 Delicious Street, Food City
-                    </p>
-                    <p class="mb-2">
-                        <i class="fas fa-phone text-warning me-2"></i>(555) 123-4567
-                    </p>
+                <!-- Copyright Section -->
+                <hr class="border-secondary">
+                <div class="text-center pt-3 text-warning">
                     <p>
-                        <i class="fas fa-envelope text-warning me-2"></i>support@deliciouseats.com
+                        &copy; 2024 Bite Burst. All Rights Reserved.
+                        <i class="fas fa-heart text-danger"></i> Team AIA
                     </p>
                 </div>
             </div>
-        </div>
-
-        <!-- Copyright Section -->
-        <hr class="border-secondary">
-        <div class="text-center pt-3 text-warning">
-            <p>
-                &copy; 2024 Bite Burst. All Rights Reserved. 
-                 <i class="fas fa-heart text-danger"></i> Team AIA
-            </p>
-        </div>
-    </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
 
 
-<!-- footer section here -->
+        <!-- footer section here -->
 
-    <!-- Bootstrap and Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap and Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      // Create floating food icons
-      const foodIcons = ['🍔', '🍕', '🌮', '🍟', '🌭', '🥤', '🍦', '🍪'];
-      const iconContainer = document.getElementById('floatingIcons');
-      
-      function createFoodIcon() {
-      const icon = document.createElement('div');
-      icon.className = 'food-icon';
-      icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
-      icon.style.left = Math.random() * 100 + 'vw';
-      icon.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      iconContainer.appendChild(icon);
-      
-      setTimeout(() => {
-          icon.remove();
-      }, 15000);
-      }
-      
-      setInterval(createFoodIcon, 2000);
-      
-      // Satisfaction emoji interaction
-      document.querySelectorAll('.satisfaction-emoji').forEach(emoji => {
-      emoji.addEventListener('click', function() {
-          document.querySelectorAll('.satisfaction-emoji').forEach(e => e.classList.remove('active'));
-          this.classList.add('active');
-          
-          // Add bounce animation
-          this.classList.add('animate__animated', 'animate__bounce');
-          setTimeout(() => {
-              this.classList.remove('animate__animated', 'animate__bounce');
-          }, 1000);
-      });
-      });
-      
-      // Form submission animation
-      document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const button = this.querySelector('button');
-      button.innerHTML = '<i class="fas fa-hamburger fa-spin"></i> Cooking...';
-      
-      // Create flying food animation
-      const foodEmoji = document.createElement('div');
-      foodEmoji.className = 'order-animation';
-      foodEmoji.textContent = '🍔';
-      foodEmoji.style.position = 'fixed';
-      foodEmoji.style.left = button.getBoundingClientRect().left + 'px';
-      foodEmoji.style.top = button.getBoundingClientRect().top + 'px';
-      document.body.appendChild(foodEmoji);
-      
-      setTimeout(() => {
-          foodEmoji.style.transform = 'translate(100vw, -100vh) rotate(360deg)';
-          
-          setTimeout(() => {
-              foodEmoji.remove();
-              button.innerHTML = '<i class="fas fa-check"></i> Message Delivered!';
-              button.style.backgroundColor = '#28a745';
-              
-              // Create success confetti effect
-              createConfettiEffect();
-      
-              // Reset form after delay
-              setTimeout(() => {
-                  this.reset();
-                  button.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
-                  button.style.backgroundColor = '';
-                  document.querySelectorAll('.satisfaction-emoji').forEach(e => e.classList.remove('active'));
-              }, 3000);
-          }, 1000);
-      }, 100);
-      });
-      
-      // Confetti effect
-      function createConfettiEffect() {
-      for (let i = 0; i < 30; i++) {
-          const confetti = document.createElement('div');
-          confetti.style.position = 'fixed';
-          confetti.style.zIndex = '1000';
-          confetti.style.width = '10px';
-          confetti.style.height = '10px';
-          confetti.style.backgroundColor = ['#ff3b3b', '#ffc107', '#28a745'][Math.floor(Math.random() * 3)];
-          confetti.style.borderRadius = '50%';
-          confetti.style.left = '50%';
-          confetti.style.top = '50%';
-          confetti.style.transform = 'translate(-50%, -50%)';
-          confetti.style.transition = 'all 1s ease-out';
-          document.body.appendChild(confetti);
-      
-          // Random direction animation
-          setTimeout(() => {
-              const angle = Math.random() * Math.PI * 2;
-              const distance = 100 + Math.random() * 100;
-              confetti.style.transform = `translate(
+        <script>
+            // Create floating food icons
+            const foodIcons = ['🍔', '🍕', '🌮', '🍟', '🌭', '🥤', '🍦', '🍪'];
+            const iconContainer = document.getElementById('floatingIcons');
+
+            function createFoodIcon() {
+                const icon = document.createElement('div');
+                icon.className = 'food-icon';
+                icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
+                icon.style.left = Math.random() * 100 + 'vw';
+                icon.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                iconContainer.appendChild(icon);
+
+                setTimeout(() => {
+                    icon.remove();
+                }, 15000);
+            }
+
+            setInterval(createFoodIcon, 2000);
+
+            // Satisfaction emoji interaction
+            document.querySelectorAll('.satisfaction-emoji').forEach(emoji => {
+                emoji.addEventListener('click', function () {
+                    document.querySelectorAll('.satisfaction-emoji').forEach(e => e.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Add bounce animation
+                    this.classList.add('animate__animated', 'animate__bounce');
+                    setTimeout(() => {
+                        this.classList.remove('animate__animated', 'animate__bounce');
+                    }, 1000);
+                });
+            });
+
+            // Form submission animation
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const button = this.querySelector('button');
+                button.innerHTML = '<i class="fas fa-hamburger fa-spin"></i> Cooking...';
+
+                // Create flying food animation
+                const foodEmoji = document.createElement('div');
+                foodEmoji.className = 'order-animation';
+                foodEmoji.textContent = '🍔';
+                foodEmoji.style.position = 'fixed';
+                foodEmoji.style.left = button.getBoundingClientRect().left + 'px';
+                foodEmoji.style.top = button.getBoundingClientRect().top + 'px';
+                document.body.appendChild(foodEmoji);
+
+                setTimeout(() => {
+                    foodEmoji.style.transform = 'translate(100vw, -100vh) rotate(360deg)';
+
+                    setTimeout(() => {
+                        foodEmoji.remove();
+                        button.innerHTML = '<i class="fas fa-check"></i> Message Delivered!';
+                        button.style.backgroundColor = '#28a745';
+
+                        // Create success confetti effect
+                        createConfettiEffect();
+
+                        // Reset form after delay
+                        setTimeout(() => {
+                            this.reset();
+                            button.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+                            button.style.backgroundColor = '';
+                            document.querySelectorAll('.satisfaction-emoji').forEach(e => e.classList.remove('active'));
+                        }, 3000);
+                    }, 1000);
+                }, 100);
+            });
+
+            // Confetti effect
+            function createConfettiEffect() {
+                for (let i = 0; i < 30; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.zIndex = '1000';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = ['#ff3b3b', '#ffc107', '#28a745'][Math.floor(Math.random() * 3)];
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.left = '50%';
+                    confetti.style.top = '50%';
+                    confetti.style.transform = 'translate(-50%, -50%)';
+                    confetti.style.transition = 'all 1s ease-out';
+                    document.body.appendChild(confetti);
+
+                    // Random direction animation
+                    setTimeout(() => {
+                        const angle = Math.random() * Math.PI * 2;
+                        const distance = 100 + Math.random() * 100;
+                        confetti.style.transform = `translate(
                   ${Math.cos(angle) * distance}px,
                   ${Math.sin(angle) * distance}px
               ) scale(0)`;
-              
-              // Remove after animation
-              setTimeout(() => confetti.remove(), 1000);
-          }, 0);
-      }
-      }
-      
-      // Scroll animations
-      const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.style.visibility = 'visible';
-              entry.target.classList.add('animate__fadeInUp');
-          }
-      });
-      }, {
-      threshold: 0.1
-      });
-      
-      document.querySelectorAll('.animate__animated').forEach(element => {
-      element.style.visibility = 'hidden';
-      observer.observe(element);
-      });
-      
-      // Interactive contact cards
-      document.querySelectorAll('.contact-card').forEach(card => {
-      card.addEventListener('mousemove', function(e) {
-          const rect = this.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          this.style.transform = `
+
+                        // Remove after animation
+                        setTimeout(() => confetti.remove(), 1000);
+                    }, 0);
+                }
+            }
+
+            // Scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        entry.target.classList.add('animate__fadeInUp');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate__animated').forEach(element => {
+                element.style.visibility = 'hidden';
+                observer.observe(element);
+            });
+
+            // Interactive contact cards
+            document.querySelectorAll('.contact-card').forEach(card => {
+                card.addEventListener('mousemove', function (e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    this.style.transform = `
               perspective(1000px)
-              rotateX(${(y - rect.height/2) / 20}deg)
-              rotateY(${-(x - rect.width/2) / 20}deg)
+              rotateX(${(y - rect.height / 2) / 20}deg)
+              rotateY(${-(x - rect.width / 2) / 20}deg)
               translateY(-10px)
           `;
-      });
-      
-      card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-      });
-      });
-      
-      // Form input animations
-      document.querySelectorAll('.form-control').forEach(input => {
-      input.addEventListener('focus', function() {
-          this.classList.add('animate__animated', 'animate__pulse');
-      });
-      
-      input.addEventListener('blur', function() {
-          this.classList.remove('animate__animated', 'animate__pulse');
-      });
-      });
-      
-      // Initialize tooltips
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-      });
-      
-      // Create initial food icons
-      for (let i = 0; i < 5; i++) {
-      setTimeout(createFoodIcon, i * 300);
-      }
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-  </body>
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
+            });
+
+            // Form input animations
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.classList.add('animate__animated', 'animate__pulse');
+                });
+
+                input.addEventListener('blur', function () {
+                    this.classList.remove('animate__animated', 'animate__pulse');
+                });
+            });
+
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Create initial food icons
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createFoodIcon, i * 300);
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
