@@ -210,6 +210,15 @@
             background-color: #1a1a1a;
             color: #ffffff;
         }
+        [data-theme="dark"] *{
+            color: #ffffff;
+        }
+        [data-theme="dark"] .sm-txt {
+            color: #ffffff !important;
+        }
+        [data-theme="dark"] .blk-txt {
+            color: #000000 !important;
+        }
 
         [data-theme="dark"] .card {
             background-color: #2d2d2d;
@@ -417,7 +426,7 @@
                                     <span class="text-success">
                                         <i class="fas fa-arrow-up"></i> 12%
                                     </span>
-                                    <small class="text-muted">vs last month</small>
+                                    <small class=" sm-txt text-muted">vs last month</small>
                                 </div>
                             </div>
                         </div>
@@ -512,21 +521,21 @@
                     </div>
                     <div class="card-body text-center">
                         <h4>Anas Raheem</h4>
-                        <p class="text-muted">Silver Member since January 2024</p>
+                        <p class="text-muted sm-txt">Silver Member since January 2024</p>
 
                         <!-- Enhanced Reward Progress -->
                         <div class="mb-4">
-                            <h6 class="text-muted mb-2">Progress to Gold Status</h6>
+                            <h6 class="text-muted mb-2 sm-txt">Progress to Gold Status</h6>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                                     style="width: 75%"></div>
                             </div>
-                            <small class="text-muted">450/600 points</small>
+                            <small class="sm-txt text-muted">450/600 points</small>
                         </div>
 
                         <!-- Achievement Badges -->
                         <div class="mb-4">
-                            <h6 class="text-muted mb-3">Achievements</h6>
+                            <h6 class="text-muted  mb-3 sm-txt">Achievements</h6>
                             <div class="achievement-badge" data-bs-toggle="tooltip" title="Early Adopter">
                                 <i class="fas fa-award fa-2x text-warning"></i>
                             </div>
@@ -543,29 +552,29 @@
                             <div class="col-4">
                                 <div class="p-3 border rounded">
                                     <h6 class="mb-1">24</h6>
-                                    <small class="text-muted">Orders</small>
+                                    <small class=" sm-txt text-muted">Orders</small>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-3 border rounded">
                                     <h6 class="mb-1">4.8</h6>
-                                    <small class="text-muted">Rating</small>
+                                    <small class=" sm-txt text-muted">Rating</small>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-3 border rounded">
                                     <h6 class="mb-1">6</h6>
-                                    <small class="text-muted">Reviews</small>
+                                    <small class=" sm-txt text-muted">Reviews</small>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-custom-red" data-bs-toggle="modal"
+                            <button class="btn btn-custom-red sm-txt" data-bs-toggle="modal"
                                 data-bs-target="#editProfileModal">
                                 <i class="fas fa-user-edit me-2"></i>Edit Profile
                             </button>
-                            <button class="btn btn-custom-yellow" data-bs-toggle="modal"
+                            <button class="btn btn-custom-yellow sm-txt" data-bs-toggle="modal"
                                 data-bs-target="#preferencesModal">
                                 <i class="fas fa-cog me-2"></i>Preferences
                             </button>
@@ -589,7 +598,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <h6 class="mb-1">20% OFF</h6>
-                                            <small class="text-muted">Valid until Dec 31, 2024</small>
+                                            <small class=" sm-txt text-muted">Valid until Dec 31, 2024</small>
                                         </div>
                                         <button class="btn btn-sm btn-outline-warning">Use Now</button>
                                     </div>
@@ -600,7 +609,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <h6 class="mb-1">Free Delivery</h6>
-                                            <small class="text-muted">No minimum order</small>
+                                            <small class=" sm-txt text-muted">No minimum order</small>
                                         </div>
                                         <button class="btn btn-sm btn-outline-success">Use Now</button>
                                     </div>
@@ -654,7 +663,7 @@
                                             <option>Cancelled</option>
                                         </select>
                                         <button class="btn btn-sm btn-custom-red">
-                                            <i class="fas fa-filter me-1"></i>Filter
+                                            <i class="fas fa-filter me-1"></i><span class="sm-txt">Filter</span>
                                         </button>
                                     </div>
                                 </div>
@@ -673,15 +682,15 @@
                                         <div class="order-tracking-timeline">
                                             <div class="timeline-item">
                                                 <h6>Order Confirmed</h6>
-                                                <small class="text-muted">2:30 PM</small>
+                                                <small class=" sm-txt text-muted">2:30 PM</small>
                                             </div>
                                             <div class="timeline-item">
                                                 <h6>Preparing Your Food</h6>
-                                                <small class="text-muted">2:35 PM</small>
+                                                <small class=" sm-txt text-muted">2:35 PM</small>
                                             </div>
                                             <div class="timeline-item">
                                                 <h6>Out for Delivery</h6>
-                                                <small class="text-muted">Expected by 3:15 PM</small>
+                                                <small class=" sm-txt text-muted">Expected by 3:15 PM</small>
                                             </div>
                                         </div>
 
@@ -694,7 +703,7 @@
                                                 <button class="btn btn-sm btn-outline-danger">
                                                     <i class="fas fa-times me-1"></i>Cancel Order
                                                 </button>
-                                                <button class="btn btn-sm btn-custom-red">
+                                                <button class="btn btn-sm btn-custom-red sm-txt">
                                                     <i class="fas fa-map-marker-alt me-1"></i>Track Order
                                                 </button>
                                             </div>
@@ -715,10 +724,10 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <p class="mb-0"><strong>Total:</strong> Rs. 1,799</p>
-                                                <small class="text-muted">Delivered Yesterday</small>
+                                                <small class=" sm-txt text-muted">Delivered Yesterday</small>
                                             </div>
                                             <div class="btn-group">
-                                                <button class="btn btn-sm btn-custom-red">
+                                                <button class="btn btn-sm btn-custom-red sm-txt">
                                                     <i class="fas fa-redo me-1"></i>Reorder
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-secondary">
@@ -775,8 +784,8 @@
                                                     <div class="card-body text-center">
                                                         <i class="fas fa-gift fa-2x text-warning mb-2"></i>
                                                         <h6>Free Dessert</h6>
-                                                        <p class="text-muted mb-2">200 points needed</p>
-                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
+                                                        <p class="text-muted mb-2 sm-txt">200 points needed</p>
+                                                        <button class="btn btn-sm btn-custom-red sm-txt">Redeem</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -825,7 +834,7 @@
                                                         id="totalOrders">0</span>
                                                 </span>
                                                 <span class="badge bg-warning text-dark">
-                                                    <i class="bi bi-cash"></i> Revenue: $<span
+                                                    <i class="bi bi-cash"></i> Spent: Rs. <span
                                                         id="totalRevenue">0</span>
                                                 </span>
                                             </div>
@@ -842,7 +851,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="bg-light p-3 rounded">
-                                                        <h5 class="text-danger">Revenue Trend</h5>
+                                                        <h5 class="text-danger">Spending Trend</h5>
                                                         <canvas id="revenueChart" height="200"></canvas>
                                                     </div>
                                                 </div>
@@ -1047,29 +1056,29 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Profile</h5>
+                    <h5 class="modal-title blk-txt">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="editProfileForm">
                         <div class="mb-3">
-                            <label class="form-label">Profile Picture</label>
+                            <label class="form-label blk-txt">Profile Picture</label>
                             <div class="d-flex align-items-center">
-                                <img src="/api/placeholder/100/100" class="rounded-circle me-3"
+                                <img src="https://media.licdn.com/dms/image/v2/D4D03AQEflfDxWIQJuA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1713264864535?e=2147483647&v=beta&t=D88Lc9dIIHHIqT4CGH6Umlh7gEz9L6sdw-h3Jg4kRRY" class="rounded-circle me-3"
                                     style="width: 60px; height: 60px;">
                                 <button type="button" class="btn btn-outline-secondary btn-sm">Change Photo</button>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Full Name</label>
+                            <label class="form-label blk-txt">Full Name</label>
                             <input type="text" class="form-control" value="Anas Raheem">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
+                            <label class="form-label blk-txt">Email</label>
                             <input type="email" class="form-control" value="anas@example.com">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Phone Number</label>
+                        <div class="mb-3"> 
+                            <label class="form-label blk-txt">Phone Number</label>
                             <input type="tel" class="form-control" value="+92 300 1234567">
                         </div>
                     </form>
@@ -1131,24 +1140,24 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Notifications</h5>
+                    <h5 class="modal-title blk-txt">Notifications</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="list-group">
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1">Order Delivered!</h6>
-                                <small class="text-muted">Just now</small>
+                                <h6 class="mb-1"><span class="blk-txt">Order Delivered!</span></h6>
+                                <small class=" blk-txt text-muted">Just now</small>
                             </div>
-                            <p class="mb-1">Your order #12344 has been delivered. Enjoy your meal!</p>
+                            <p class="mb-1 blk-txt">Your order #12344 has been delivered. Enjoy your meal!</p>
                         </div>
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1">New Reward Available</h6>
-                                <small class="text-muted">2 hours ago</small>
+                                <h6 class="mb-1 blk-txt">New Reward Available</h6>
+                                <small class=" blk-txt text-muted">2 hours ago</small>
                             </div>
-                            <p class="mb-1">You've unlocked a new reward! Check your rewards tab.</p>
+                            <p class="mb-1 blk-txt">You've unlocked a new reward! Check your rewards tab.</p>
                         </div>
                     </div>
                 </div>
