@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Bite Burst</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --primary-red: #ff3700;
+            --primary-yellow: #ffdd00;
+        }
+
+        .navbar-custom {
+            background-color: var(--primary-red) !important;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white !important;
+        }
+
+        .dashboard-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: scale(1.02);
+        }
+
+        .status-pending {
+            color: var(--primary-yellow);
+        }
+
+        .status-delivered {
+            color: #28a745;
+        }
+
+        .status-cancelled {
+            color: var(--primary-red);
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-red);
+        }
+
+        .nav-pills .nav-link {
+            color: var(--primary-red);
+        }
+
+        .progress-bar {
+            background-color: var(--primary-red);
+        }
+
+        .btn-custom-red {
+            background-color: var(--primary-red);
+            color: white;
+        }
+
+        .btn-custom-yellow {
+            background-color: var(--primary-yellow);
+            color: black;
+        }
+
+        .loyalty-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--primary-yellow);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary-red);
+        }
+
+        .stats-card {
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .notification-badge {
+            position: relative;
+            display: inline-block;
+        }
+
+        .notification-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+
+        .reward-progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Enhanced Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-utensils me-2"></i>Bite Burst
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#">
+                            <div class="notification-badge">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-count">3</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="users.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Quick Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <h6 class="text-muted">Total Orders</h6>
+                        <h3>24</h3>
+                        <div class="mt-2">
+                            <span class="text-success"><i class="fas fa-arrow-up"></i> 12%</span>
+                            <small class="text-muted">vs last month</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <h6 class="text-muted">Reward Points</h6>
+                        <h3>450</h3>
+                        <div class="mt-2">
+                            <span class="text-success"><i class="fas fa-star"></i> Silver Member</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <h6 class="text-muted">Total Savings</h6>
+                        <h3>Rs. 2,500</h3>
+                        <div class="mt-2">
+                            <span class="text-primary"><i class="fas fa-tags"></i> From Promos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <h6 class="text-muted">Active Vouchers</h6>
+                        <h3>3</h3>
+                        <div class="mt-2">
+                            <span class="text-warning"><i class="fas fa-clock"></i> Expiring Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Enhanced User Profile Section -->
+            <div class="col-lg-4 mb-4">
+                <div class="card dashboard-card position-relative">
+                    <div class="loyalty-badge">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEflfDxWIQJuA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1713264864535?e=2147483647&v=beta&t=D88Lc9dIIHHIqT4CGH6Umlh7gEz9L6sdw-h3Jg4kRRY" class="rounded-circle mb-3" alt="Profile Picture">
+                        <h4>Anas Raheem</h4>
+                        <p class="text-muted">Member since January 2024</p>
+
+                        <!-- Reward Progress -->
+                        <div class="mb-4">
+                            <h6 class="text-muted mb-2">Progress to Gold Status</h6>
+                            <div class="progress reward-progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                            </div>
+                            <small class="text-muted">450/600 points</small>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-custom-red">Edit Profile</button>
+                            <button class="btn btn-custom-yellow">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vouchers Section -->
+                <div class="card dashboard-card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Your Vouchers</h5>
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">20% OFF</h6>
+                                        <small class="text-muted">Valid on all orders</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-custom-red">Use</button>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Free Delivery</h6>
+                                        <small class="text-muted">Min order Rs. 1000</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-custom-red">Use</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Dashboard Content -->
+            <div class="col-lg-8">
+                <div class="card dashboard-card">
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-4" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="pill" href="#orders">
+                                    <i class="fas fa-shopping-bag me-2"></i>Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="#favorites">
+                                    <i class="fas fa-heart me-2"></i>Favorites
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="#addresses">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Addresses
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="#rewards">
+                                    <i class="fas fa-gift me-2"></i>Rewards
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Orders Tab -->
+                            <div id="orders" class="tab-pane fade show active">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="mb-0">Recent Orders</h5>
+                                    <div class="btn-group">
+                                        <button class="btn btn-outline-secondary btn-sm">Filter</button>
+                                        <button class="btn btn-outline-secondary btn-sm">Sort</button>
+                                    </div>
+                                </div>
+                                <div class="list-group">
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">Order #12345</h5>
+                                            <small class="status-pending">
+                                                <i class="fas fa-clock"></i> Pending
+                                            </small>
+                                        </div>
+                                        <p class="mb-1">1x Crown Crust Pizza, 2x Classic Fries</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small>Total: Rs. 1,500 - Ordered: Today</small>
+                                            <button class="btn btn-sm btn-custom-red">Track Order</button>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">Order #12344</h5>
+                                            <small class="status-delivered">
+                                                <i class="fas fa-check-circle"></i> Delivered
+                                            </small>
+                                        </div>
+                                        <p class="mb-1">1x Chicken Fajita, 1x Steak</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small>Total: Rs. 1,799 - Ordered: Yesterday</small>
+                                            <button class="btn btn-sm btn-outline-secondary">Reorder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Favorites Tab -->
+                            <div id="favorites" class="tab-pane fade">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <img src="https://png.pngtree.com/png-vector/20240208/ourmid/pngtree-cheese-and-chicken-pizza-png-image_11713322.png" class="card-img-top" alt="Crown Crust">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h5 class="card-title mb-0">Crown Crust</h5>
+                                                    <button class="btn btn-link text-danger">
+                                                        <i class="fas fa-heart"></i>
+                                                    </button>
+                                                </div>
+                                                <p class="card-text">Rs. 1000</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-custom-red btn-sm">Order Now</button>
+                                                    <button class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <img src="https://www.pizzrella.com/cdn/shop/files/Fajita.png?v=1690390630&width=1445" class="card-img-top"
+                                                alt="Chicken Fajita">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h5 class="card-title mb-0">Chicken Fajita</h5>
+                                                    <button class="btn btn-link text-danger">
+                                                        <i class="fas fa-heart"></i>
+                                                    </button>
+                                                </div>
+                                                <p class="card-text">Rs. 999</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-custom-red btn-sm">Order Now</button>
+                                                    <button class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Addresses Tab -->
+                            <div id="addresses" class="tab-pane fade">
+                                <div class="mb-3">
+                                    <button class="btn btn-custom-red mb-3" data-bs-toggle="modal"
+                                        data-bs-target="#addAddressModal">
+                                        <i class="fas fa-plus"></i> Add New Address
+                                    </button>
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="d-flex align-items-center">
+                                                        <i class="fas fa-home me-2"></i> Home
+                                                        <span class="badge bg-primary ms-2">Default</span>
+                                                    </h6>
+                                                    <p class="mb-1">123 Delicious Street, Food City, FC 12345</p>
+                                                    <small class="text-muted">Phone: +92 300 1234567</small>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-outline-danger">Edit</button>
+                                                    <button class="btn btn-sm btn-outline-secondary">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="d-flex align-items-center">
+                                                        <i class="fas fa-building me-2"></i> Office
+                                                    </h6>
+                                                    <p class="mb-1">456 Business Ave, Work District, WD 67890</p>
+                                                    <small class="text-muted">Phone: +92 300 7654321</small>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-outline-danger">Edit</button>
+                                                    <button class="btn btn-sm btn-outline-secondary">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rewards Tab -->
+                            <div id="rewards" class="tab-pane fade">
+                                <div class="mb-4">
+                                    <h5>Your Rewards Status</h5>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <i class="fas fa-medal fa-2x text-warning me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Silver Member</h6>
+                                                    <div class="progress reward-progress" style="width: 200px;">
+                                                        <div class="progress-bar" role="progressbar" style="width: 75%">
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-muted">150 points to Gold status</small>
+                                                </div>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col-md-4">
+                                                    <div class="border rounded p-2 text-center">
+                                                        <h6 class="mb-1">450</h6>
+                                                        <small class="text-muted">Points Balance</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="border rounded p-2 text-center">
+                                                        <h6 class="mb-1">3</h6>
+                                                        <small class="text-muted">Available Rewards</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="border rounded p-2 text-center">
+                                                        <h6 class="mb-1">50</h6>
+                                                        <small class="text-muted">Points This Month</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h5>Available Rewards</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h6>Free Dessert</h6>
+                                                    <p class="text-muted mb-2">Get any dessert free with your next order
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="badge bg-warning">200 points</span>
+                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h6>30% Off Next Order</h6>
+                                                    <p class="text-muted mb-2">Save big on your next purchase</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="badge bg-warning">400 points</span>
+                                                        <button class="btn btn-sm btn-custom-red">Redeem</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Address Modal -->
+    <div class="modal fade" id="addAddressModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Address Label</label>
+                            <input type="text" class="form-control" placeholder="e.g., Home, Office">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Full Address</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="defaultAddress">
+                            <label class="form-check-label" for="defaultAddress">Set as default address</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-custom-red">Save Address</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
