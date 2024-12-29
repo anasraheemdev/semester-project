@@ -1,331 +1,1367 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - QuickBite</title>
-    <link rel="shortcut icon"
-        href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYle0dIli_y0vLXFDGa-BzZNqmaKYsE7za1VTJvkVOOnOAN8HazExw2En3WAQLN7l2cUlndTfoP4YZLgRXNiZ5fOup0ph4nkoCTheqUtbFHuxM9aJECTc_QK_AZJKPOsUrW3Wk4SWJYCF8i0uizmrQg5RkiAm8gmWX0DHTKp-MWRxenYPPq6_n7v9Gg0I/s320/pngwing.com%20(1).png"
-        type="image/x-icon">
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      :root {
-        --primary-red: #dc3545;
-        --primary-yellow: #ffc107;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - QuickBite</title>
+  <link rel="shortcut icon"
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYle0dIli_y0vLXFDGa-BzZNqmaKYsE7za1VTJvkVOOnOAN8HazExw2En3WAQLN7l2cUlndTfoP4YZLgRXNiZ5fOup0ph4nkoCTheqUtbFHuxM9aJECTc_QK_AZJKPOsUrW3Wk4SWJYCF8i0uizmrQg5RkiAm8gmWX0DHTKp-MWRxenYPPq6_n7v9Gg0I/s320/pngwing.com%20(1).png"
+    type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --primary-red: #dc3545;
+      --primary-yellow: #ffc107;
+    }
+
+
+    .hero-section {
+      background: linear-gradient(135deg, #dc3545 0%, #ff4d5a 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      padding-top: 75px;
+    }
+
+    .floating-burger {
+      position: absolute;
+      right: 10%;
+      top: 20%;
+      width: 40%;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+      transition: transform 0.3s ease;
+    }
+
+    .floating-burger:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px) rotate(0deg);
       }
 
-      .hero-section {
-        background: linear-gradient(
-          135deg,
-          var(--primary-red) 0%,
-          #ff4d5a 100%
-        );
-        min-height: 60vh;
-        position: relative;
-        overflow: hidden;
+      50% {
+        transform: translateY(-20px) rotate(5deg);
       }
 
-      .floating-burger {
-        position: absolute;
-        animation: float 6s ease-in-out infinite;
-        width: 40%;
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.8rem;
+      animation: fadeIn 1s ease-out 0.5s both;
+    }
+
+    .hero-btn {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: bounceIn 1s ease-out 1s both;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .background-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: shapeFloat 10s infinite linear;
+    }
+
+    @keyframes shapeFloat {
+      0% {
+        transform: translateY(0) rotate(0deg);
       }
 
-      @keyframes float {
-        0% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-20px) rotate(10deg);
-        }
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+      }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0) translateX(-50%);
       }
 
-      .card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
+      40% {
+        transform: translateY(-30px) translateX(-50%);
       }
 
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      60% {
+        transform: translateY(-15px) translateX(-50%);
       }
+    }
 
-      .stat-number {
-        font-size: 3rem;
-        font-weight: bold;
-        color: var(--primary-red);
-      }
-
-      .progress-bar {
-        transition: width 1.5s ease-in-out;
-      }
-
-      .timeline-item {
-        position: relative;
-        padding-left: 50px;
-        margin-bottom: 50px;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 2px;
-        background-color: var(--primary-yellow);
-      }
-
-      .timeline-item::after {
-        content: "";
-        position: absolute;
-        left: -9px;
-        top: 0;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: var(--primary-red);
-        border: 4px solid var(--primary-yellow);
-      }
-
-      .scroll-reveal {
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease;
       }
 
-      .scroll-reveal.revealed {
+      to {
+        transform: translateX(0);
         opacity: 1;
-        transform: translateY(0);
       }
-    </style>
-  </head>
-  <body>
-    <div id="navbar"></div>
+    }
 
-    <!-- Hero Section -->
-    <section
-      class="hero-section  d-flex align-items-center text-white position-relative" style="margin-top: 75px; padding-top: 100px;"
-    >
-      <img
-        src="https://www.mrcod.pk/wp-content/uploads/2023/03/Crunch-Burger-1.webp"
-        alt="Floating Burger"
-        class="floating-burger"
-        style="right: 10%; top: 0%"
-      />
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 animate_w_animated animate__fadeInLeft">
-            <h1 class="display-3 fw-bold mb-4">Our Story</h1>
-            <p class="lead text-warning">Serving Smiles Since 1995</p>
-            <button
-              class="btn btn-warning btn-lg mt-3"
-              onclick="scrollToContent()"
-            >
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+      }
+
+      80% {
+        opacity: 1;
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .floating-burger {
+        width: 60%;
+        top: 50%;
+        right: -10%;
+        opacity: 0.8;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.4rem;
+      }
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--primary-red);
+    }
+
+    .progress-bar {
+      transition: width 1.5s ease-in-out;
+    }
+
+    .journey-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .journey-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .milestone-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .bg-soft-primary {
+      background-color: #f8f9fa;
+    }
+
+
+    .stats-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 40%,
+                rgba(255, 193, 7, 0.1) 50%,
+                transparent 60%
+            );
+            transition: 0.6s;
+            transform: rotate(0deg);
+        }
+
+        .stat-card:hover::after {
+            transform: rotate(180deg);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #dc3545;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .stat-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ffc107;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-circle {
+            transform: rotate(360deg);
+            border-color: #dc3545;
+        }
+
+        .progress-ring {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 120px;
+            height: 120px;
+        }
+
+        .progress-ring circle {
+            fill: none;
+            stroke: #dc3545;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 0 366;
+            transition: stroke-dasharray 1s ease;
+        }
+
+        @keyframes countUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animated-count {
+            animation: countUp 0.5s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+            .stat-card {
+                margin-bottom: 2rem;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 50px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background-color: var(--primary-yellow);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--primary-red);
+      border: 4px solid var(--primary-yellow);
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+    :root {
+      --primary-red: #dc3545;
+      --primary-yellow: #ffc107;
+    }
+
+    .special-card {
+      border: none;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .special-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-yellow));
+      color: white;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .special-card:hover .icon-wrapper {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    .feature-title {
+      color: var(--primary-red);
+      font-weight: 600;
+    }
+
+    .highlight-text {
+      color: var(--primary-yellow);
+      font-weight: 600;
+    }
+
+    .bg-gradient-light {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .stat-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 8px solid var(--primary-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-circle::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255, 193, 7, 0.2) 50%, transparent 60%);
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+
+
+    .rating-section {
+      background: linear-gradient(135deg, #dc3545 0%, #ff4d5a 100%);
+      padding: 5rem 0;
+    }
+
+    .rating-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .rating-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .star-icon {
+      color: #ffc107;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .star-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .star-icon.active {
+      color: #ffc107;
+    }
+
+    .star-icon.inactive {
+      color: #e0e0e0;
+    }
+
+    .progress {
+      height: 0.75rem;
+      background-color: #f0f0f0;
+    }
+
+    .progress-bar {
+      background-color: #ffc107;
+      transition: width 1s ease-in-out;
+    }
+
+    .rating-number {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #dc3545;
+      line-height: 1;
+    }
+
+    .animate-stars {
+      animation: starPulse 0.5s ease-in-out;
+    }
+
+    @keyframes starPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .stat-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 8px solid #ffc107;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-circle::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255, 193, 7, 0.2) 50%, transparent 60%);
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .feedback-message {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .feedback-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section d-flex align-items-center">
+    <!-- Background Shapes -->
+    <div class="background-shapes">
+      <div class="shape" style="width: 50px; height: 50px; left: 10%; animation-duration: 15s;"></div>
+      <div class="shape" style="width: 70px; height: 70px; left: 30%; animation-duration: 12s; animation-delay: 2s;">
+      </div>
+      <div class="shape" style="width: 40px; height: 40px; left: 60%; animation-duration: 18s; animation-delay: 4s;">
+      </div>
+      <div class="shape" style="width: 60px; height: 60px; left: 80%; animation-duration: 14s; animation-delay: 6s;">
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-6 hero-content">
+          <h1 class="hero-title text-white mb-4">Our Story</h1>
+          <p class="hero-subtitle text-warning mb-4">Serving Smiles Since 1995</p>
+          <div class="d-flex gap-3">
+            <button class="btn btn-warning btn-lg hero-btn px-4 py-3">
               Discover More <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+            <button class="btn btn-outline-light btn-lg hero-btn px-4 py-3">
+              Our Menu <i class="fas fa-utensils ms-2"></i>
             </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Stats Section -->
-    <section class="py-5 bg-light">
-      <div class="container">
+    <!-- Floating Burger Image -->
+    <img src="https://www.mrcod.pk/wp-content/uploads/2023/03/Crunch-Burger-1.webp" alt="Floating Burger"
+      class="floating-burger" onmouseover="this.style.transform='scale(1.1) rotate(10deg)'"
+      onmouseout="this.style.transform='scale(1) rotate(0deg)'" />
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator text-white">
+      <i class="fas fa-chevron-down fa-2x"></i>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
         <div class="row g-4">
-          <div class="col-md-3 col-6">
-            <div class="text-center scroll-reveal">
-              <div class="stat-number" data-target="25">0</div>
-              <p class="text-muted">Locations</p>
+            <!-- Locations Stat -->
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-circle">
+                        <svg class="progress-ring">
+                            <circle cx="60" cy="60" r="58"></circle>
+                        </svg>
+                        <i class="fas fa-store stat-icon"></i>
+                    </div>
+                    <div class="stat-number" data-target="25">0</div>
+                    <p class="stat-label">Locations</p>
+                </div>
+            </div>
+
+            <!-- Team Members Stat -->
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-circle">
+                        <svg class="progress-ring">
+                            <circle cx="60" cy="60" r="58"></circle>
+                        </svg>
+                        <i class="fas fa-users stat-icon"></i>
+                    </div>
+                    <div class="stat-number" data-target="500">0</div>
+                    <p class="stat-label">Team Members</p>
+                </div>
+            </div>
+
+            <!-- Happy Customers Stat -->
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-circle">
+                        <svg class="progress-ring">
+                            <circle cx="60" cy="60" r="58"></circle>
+                        </svg>
+                        <i class="fas fa-heart stat-icon"></i>
+                    </div>
+                    <div class="stat-number" data-target="10000">0</div>
+                    <p class="stat-label">Happy Customers</p>
+                </div>
+            </div>
+
+            <!-- Satisfaction Rate Stat -->
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-circle">
+                        <svg class="progress-ring">
+                            <circle cx="60" cy="60" r="58"></circle>
+                        </svg>
+                        <i class="fas fa-smile stat-icon"></i>
+                    </div>
+                    <div class="stat-number" data-target="98">0</div>
+                    <p class="stat-label">Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Features Section -->
+  <section class="py-5 bg-gradient-light">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="row mb-5 text-center">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="display-4 mb-3">What Makes Us <span class="highlight-text">Special</span></h2>
+          <p class="lead text-muted">Discover the unique qualities that set us apart and make every bite memorable</p>
+        </div>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="row g-4">
+        <!-- Quality Ingredients -->
+        <div class="col-md-4">
+          <div class="special-card h-100 p-4">
+            <div class="icon-wrapper">
+              <i class="fas fa-carrot"></i>
+            </div>
+            <div class="text-center">
+              <h3 class="feature-title h4 mb-3">Premium Ingredients</h3>
+              <p class="text-muted mb-4">We source the finest local ingredients daily, ensuring every dish is fresh and
+                flavorful</p>
+              <div class="stat-circle mb-3">
+                <div class="text-center">
+                  <h4 class="mb-0 display-6 text-danger">100%</h4>
+                  <small class="text-muted">Fresh Daily</small>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-3 col-6">
-            <div class="text-center scroll-reveal">
-              <div class="stat-number" data-target="500">0</div>
-              <p class="text-muted">Team Members</p>
+        </div>
+
+        <!-- Expert Chefs -->
+        <div class="col-md-4">
+          <div class="special-card h-100 p-4">
+            <div class="icon-wrapper">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <div class="text-center">
+              <h3 class="feature-title h4 mb-3">Expert Chefs</h3>
+              <p class="text-muted mb-4">Our certified chefs bring years of culinary expertise to create exceptional
+                dishes</p>
+              <div class="stat-circle mb-3">
+                <div class="text-center">
+                  <h4 class="mb-0 display-6 text-danger">15+</h4>
+                  <small class="text-muted">Years Avg. Experience</small>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-3 col-6">
-            <div class="text-center scroll-reveal">
-              <div class="stat-number" data-target="1000000">0</div>
-              <p class="text-muted">Happy Customers</p>
+        </div>
+
+        <!-- Fast Service -->
+        <div class="col-md-4">
+          <div class="special-card h-100 p-4">
+            <div class="icon-wrapper">
+              <i class="fas fa-stopwatch"></i>
             </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="text-center scroll-reveal">
-              <div class="stat-number" data-target="98">0</div>
-              <p class="text-muted">Satisfaction Rate</p>
+            <div class="text-center">
+              <h3 class="feature-title h4 mb-3">Quick Service</h3>
+              <p class="text-muted mb-4">Lightning-fast preparation without compromising on quality and taste</p>
+              <div class="stat-circle mb-3">
+                <div class="text-center">
+                  <h4 class="mb-0 display-6 text-danger">10</h4>
+                  <small class="text-muted">Min Average Wait</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="py-5">
-      <div class="container">
-        <h2 class="text-center mb-5 scroll-reveal">What Makes Us Special</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="card h-100 scroll-reveal">
-              <div class="card-body text-center">
-                <i
-                  class="fas fa-burger text-warning mb-3"
-                  style="font-size: 2.5rem"
-                ></i>
-                <h5 class="card-title">Quality Ingredients</h5>
-                <p class="card-text">
-                  We source only the freshest ingredients from local suppliers.
-                </p>
+      <!-- Additional Features -->
+      <div class="row mt-5 g-4">
+        <!-- Quick Stats -->
+        <div class="col-md-3 col-6">
+          <div class="text-center">
+            <i class="fas fa-star text-warning mb-2" style="font-size: 2rem;"></i>
+            <h4 class="text-danger">4.9/5</h4>
+            <p class="text-muted small">Customer Rating</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center">
+            <i class="fas fa-users text-warning mb-2" style="font-size: 2rem;"></i>
+            <h4 class="text-danger">50k+</h4>
+            <p class="text-muted small">Happy Customers</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center">
+            <i class="fas fa-award text-warning mb-2" style="font-size: 2rem;"></i>
+            <h4 class="text-danger">25+</h4>
+            <p class="text-muted small">Awards Won</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center">
+            <i class="fas fa-certificate text-warning mb-2" style="font-size: 2rem;"></i>
+            <h4 class="text-danger">100%</h4>
+            <p class="text-muted small">Quality Assured</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="lead mb-4">Experience the difference yourself!</p>
+          <button class="btn btn-danger btn-lg me-3">
+            <i class="fas fa-book-open me-2"></i>View Menu
+          </button>
+          <button class="btn btn-warning btn-lg">
+            <i class="fas fa-phone me-2"></i>Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-5 bg-soft-primary">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="row mb-5 text-center">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="display-4 mb-3">Our Journey</h2>
+          <p class="lead text-muted">From humble beginnings to industry leadership - our story of growth and innovation
+          </p>
+        </div>
+      </div>
+
+      <!-- Journey Timeline Cards -->
+      <div class="row g-4">
+        <!-- 1995 Milestone -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card journey-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="milestone-icon text-primary">
+                <i class="fas fa-store"></i>
+              </div>
+              <h3 class="h5 mb-3">1995</h3>
+              <h4 class="h6 text-primary mb-3">The Beginning</h4>
+              <p class="text-muted mb-3">Started with our first restaurant in downtown, serving only burgers and fries
+              </p>
+              <div class="d-flex justify-content-center align-items-center">
+                <span class="badge bg-primary">1 Location</span>
+                <span class="mx-2">•</span>
+                <span class="badge bg-success">5 Team Members</span>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card h-100 scroll-reveal">
-              <div class="card-body text-center">
-                <i
-                  class="fas fa-clock text-warning mb-3"
-                  style="font-size: 2.5rem"
-                ></i>
-                <h5 class="card-title">Fast Service</h5>
-                <p class="card-text">
-                  Your order ready in 3 minutes or it's free!
-                </p>
+        </div>
+
+        <!-- 2005 Milestone -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card journey-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="milestone-icon text-success">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="h5 mb-3">2005</h3>
+              <h4 class="h6 text-success mb-3">Regional Expansion</h4>
+              <p class="text-muted mb-3">Expanded across the state with new menu items and improved service</p>
+              <div class="d-flex justify-content-center align-items-center">
+                <span class="badge bg-primary">10 Locations</span>
+                <span class="mx-2">•</span>
+                <span class="badge bg-success">100+ Team Members</span>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card h-100 scroll-reveal">
-              <div class="card-body text-center">
-                <i
-                  class="fas fa-heart text-warning mb-3"
-                  style="font-size: 2.5rem"
-                ></i>
-                <h5 class="card-title">Made with Love</h5>
-                <p class="card-text">
-                  Every dish is prepared with care and attention.
-                </p>
+        </div>
+
+        <!-- 2015 Milestone -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card journey-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="milestone-icon text-warning">
+                <i class="fas fa-award"></i>
+              </div>
+              <h3 class="h5 mb-3">2015</h3>
+              <h4 class="h6 text-warning mb-3">National Brand</h4>
+              <p class="text-muted mb-3">Went national with franchising and introduced signature dishes</p>
+              <div class="d-flex justify-content-center align-items-center">
+                <span class="badge bg-primary">50 Locations</span>
+                <span class="mx-2">•</span>
+                <span class="badge bg-success">1000+ Team Members</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024 Milestone -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card journey-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="milestone-icon text-danger">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3 class="h5 mb-3">2024</h3>
+              <h4 class="h6 text-danger mb-3">Industry Leader</h4>
+              <p class="text-muted mb-3">Leading the industry with innovative menu and sustainable practices</p>
+              <div class="d-flex justify-content-center align-items-center">
+                <span class="badge bg-primary">100+ Locations</span>
+                <span class="mx-2">•</span>
+                <span class="badge bg-success">5000+ Team Members</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Timeline Section -->
-    <section class="py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center mb-5 scroll-reveal">Our Journey</h2>
-        <div class="timeline">
-          <div class="timeline-item scroll-reveal">
-            <h4>1995</h4>
-            <p>Opened our first location with a simple dream.</p>
+      <!-- Achievement Stats -->
+      <div class="row mt-5 g-4">
+        <div class="col-md-4">
+          <div class="card border-0 bg-primary text-white text-center p-4">
+            <h3 class="display-4 mb-0">30+</h3>
+            <p class="mb-0">Years of Excellence</p>
           </div>
-          <div class="timeline-item scroll-reveal">
-            <h4>2005</h4>
-            <p>Expanded to 10 locations across the state.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 bg-success text-white text-center p-4">
+            <h3 class="display-4 mb-0">1M+</h3>
+            <p class="mb-0">Happy Customers</p>
           </div>
-          <div class="timeline-item scroll-reveal">
-            <h4>2015</h4>
-            <p>Introduced new menu items and went national.</p>
-          </div>
-          <div class="timeline-item scroll-reveal">
-            <h4>2024</h4>
-            <p>Celebrating our success with 25 locations nationwide.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 bg-warning text-dark text-center p-4">
+            <h3 class="display-4 mb-0">50+</h3>
+            <p class="mb-0">Awards Won</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Call to Action -->
-    <section class="bg-danger text-white py-5">
-      <div class="container text-center">
-        <h2 class="mb-4 scroll-reveal">Ready to Taste the Difference?</h2>
-        <p class="lead mb-4 text-warning scroll-reveal">
-          Visit us today and experience our legendary service!
-        </p>
-        <button class="btn btn-warning btn-lg">Find Nearest Location</button>
+      <!-- Call to Action -->
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="lead mb-4">Be part of our continuing journey</p>
+          <button class="btn btn-primary btn-lg me-3">
+            <i class="fas fa-handshake me-2"></i>Join Our Team
+          </button>
+          <button class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-location-dot me-2"></i>Find Nearest Location
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Scroll Reveal Animation
-      const scrollReveal = () => {
-        const elements = document.querySelectorAll(".scroll-reveal");
-        elements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 150;
-          if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add("revealed");
+
+
+
+  <section class="rating-section">
+    <div class="container">
+      <div class="rating-card">
+        <!-- Header -->
+        <div class="text-center mb-5">
+          <h2 class="display-4 fw-bold text-danger mb-3">Customer Reviews</h2>
+          <p class="lead text-muted">See what our customers have to say</p>
+        </div>
+
+        <!-- Overall Rating -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-4 text-center">
+            <div class="stat-circle mb-3">
+              <div>
+                <span class="rating-number">4.8</span>
+                <span class="text-muted">/5</span>
+              </div>
+            </div>
+            <div class="mb-2">
+              <i class="fas fa-star star-icon active"></i>
+              <i class="fas fa-star star-icon active"></i>
+              <i class="fas fa-star star-icon active"></i>
+              <i class="fas fa-star star-icon active"></i>
+              <i class="fas fa-star-half-alt star-icon active"></i>
+            </div>
+            <p class="text-muted">Based on 10,000+ reviews</p>
+          </div>
+        </div>
+
+        <!-- Rating Bars -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>5 stars</span>
+                <span>75%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>4 stars</span>
+                <span>15%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 15%"></div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>3 stars</span>
+                <span>7%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 7%"></div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>2 stars</span>
+                <span>2%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 2%"></div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>1 star</span>
+                <span>1%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 1%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Rating -->
+        <div class="text-center">
+          <h3 class="h4 mb-4">Rate your experience</h3>
+          <div class="interactive-stars mb-3">
+            <i class="fas fa-star star-icon inactive" data-rating="1"></i>
+            <i class="fas fa-star star-icon inactive" data-rating="2"></i>
+            <i class="fas fa-star star-icon inactive" data-rating="3"></i>
+            <i class="fas fa-star star-icon inactive" data-rating="4"></i>
+            <i class="fas fa-star star-icon inactive" data-rating="5"></i>
+          </div>
+          <div class="feedback-message text-success">
+            Thank you for your rating!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animate progress bars on scroll
+    function animateProgressBars() {
+      const progressBars = document.querySelectorAll('.progress-bar');
+      progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+    }
+
+    // Interactive star rating
+    const interactiveStars = document.querySelectorAll('.interactive-stars .star-icon');
+    const feedbackMessage = document.querySelector('.feedback-message');
+
+    interactiveStars.forEach(star => {
+      star.addEventListener('mouseover', () => {
+        const rating = star.dataset.rating;
+        interactiveStars.forEach(s => {
+          if (s.dataset.rating <= rating) {
+            s.classList.remove('inactive');
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+            s.classList.add('inactive');
           }
         });
-      };
+      });
 
-      // Animated Counter
-      const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute("data-target"));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const counter = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            element.textContent = target.toLocaleString();
-            clearInterval(counter);
-          } else {
-            element.textContent = Math.floor(current).toLocaleString();
-          }
-        }, 16);
-      };
-
-      // Initialize animations when elements come into view
-      let animatedStats = false;
-      window.addEventListener("scroll", () => {
-        scrollReveal();
-
-        // Animate stats when they come into view
-        const statsSection = document.querySelector(".stat-number");
-        if (statsSection && !animatedStats) {
-          const elementTop = statsSection.getBoundingClientRect().top;
-          if (elementTop < window.innerHeight) {
-            document.querySelectorAll(".stat-number").forEach(animateCounter);
-            animatedStats = true;
-          }
+      star.addEventListener('mouseout', () => {
+        if (!star.classList.contains('selected')) {
+          interactiveStars.forEach(s => {
+            s.classList.remove('active');
+            s.classList.add('inactive');
+          });
         }
       });
 
-      // Initial check for elements in view
+      star.addEventListener('click', () => {
+        const rating = star.dataset.rating;
+        interactiveStars.forEach(s => {
+          s.classList.remove('selected');
+          if (s.dataset.rating <= rating) {
+            s.classList.add('selected', 'active', 'animate-stars');
+          } else {
+            s.classList.remove('active');
+            s.classList.add('inactive');
+          }
+        });
+        feedbackMessage.classList.add('show');
+      });
+    });
+
+    // Animate on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      animateProgressBars();
+    });
+  </script>
+
+
+  <!-- Call to Action -->
+  
+    <!-- Footer Section -->
+    <footer class="container-fluid bg-dark py-5">
+      <div class="container">
+          <div class="row text-warning">
+              <!-- Brand and Description Column -->
+              <div class="col-md-4 mb-4">
+                  <h4 class="mb-3 text-warning">
+                      <i class="fas fa-utensils me-2"></i>Bite Burst
+                  </h4>
+                  <p>
+                      Your ultimate destination for mouthwatering meals and unforgettable dining experiences. We're
+                      passionate about serving fresh, high-quality food that brings joy to your table.
+                  </p>
+                  <div class="social-links mt-3">
+                      <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-facebook"></i></a>
+                      <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="btn btn-outline-warning me-2"><i class="fab fa-twitter"></i></a>
+                      <a href="#" class="btn btn-outline-warning"><i class="fab fa-linkedin"></i></a>
+                  </div>
+              </div>
+
+              <!-- Quick Links Column -->
+              <div class="col-md-4 mb-4">
+                  <h5 class="mb-3 text-warning">Quick Links</h5>
+                  <div class="row">
+                      <div class="col-6">
+                          <ul class="list-unstyled">
+                              <li><a href="#home" class="text-warning text-decoration-none d-block">Home</a></li>
+                              <li><a href="#menu" class="text-warning text-decoration-none d-block">Menu</a></li>
+                              <li><a href="#services" class="text-warning text-decoration-none d-block">Services</a>
+                              </li>
+                              <li><a href="#special-deals" class="text-warning text-decoration-none d-block">Special
+                                      Deals</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-6">
+                          <ul class="list-unstyled">
+                              <li><a href="#about" class="text-warning text-decoration-none d-block">About Us</a></li>
+                              <li><a href="#contact" class="text-warning text-decoration-none d-block">Contact</a>
+                              </li>
+                              <li><a href="#" class="text-warning text-decoration-none d-block">Privacy Policy</a>
+                              </li>
+                              <li><a href="#" class="text-warning text-decoration-none d-block">Terms of Service</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Newsletter and Contact Column -->
+              <div class="col-md-4 mb-4">
+                  <h5 class="mb-3 text-warning">Stay Connected</h5>
+                  <p class="mb-3">
+                      Subscribe to our newsletter for exclusive deals and updates!
+                  </p>
+                  <form>
+                      <div class="input-group mb-3">
+                          <input type="email" class="form-control text-warning bg-dark border-warning"
+                              placeholder="Enter your email" required>
+                          <button class="btn btn-warning" type="submit">Subscribe</button>
+                      </div>
+                  </form>
+                  <div class="contact-info mt-4">
+                      <p class="mb-2">
+                          <i class="fas fa-map-marker-alt text-warning me-2"></i>123 Delicious Street, Food City
+                      </p>
+                      <p class="mb-2">
+                          <i class="fas fa-phone text-warning me-2"></i>(555) 123-4567
+                      </p>
+                      <p>
+                          <i class="fas fa-envelope text-warning me-2"></i>support@deliciouseats.com
+                      </p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Copyright Section -->
+          <hr class="border-secondary">
+          <div class="text-center pt-3 text-warning">
+              <p>
+                  &copy; 2024 Bite Burst. All Rights Reserved.
+                  <i class="fas fa-heart text-danger"></i> Team AIA
+              </p>
+          </div>
+      </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll Reveal Animation
+    const scrollReveal = () => {
+      const elements = document.querySelectorAll(".scroll-reveal");
+      elements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add("revealed");
+        }
+      });
+    };
+    document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add random movement to background shapes
+        document.querySelectorAll('.shape').forEach(shape => {
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.animationDuration = `${10 + Math.random() * 10}s`;
+            shape.style.animationDelay = `${Math.random() * 5}s`;
+        });
+
+    // Animated Counter
+    const animateCounter = (element) => {
+      const target = parseInt(element.getAttribute("data-target"));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const counter = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target.toLocaleString();
+          clearInterval(counter);
+        } else {
+          element.textContent = Math.floor(current).toLocaleString();
+        }
+      }, 16);
+    };
+
+
+
+    const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target;
+                    const target = parseInt(statNumber.getAttribute('data-target'));
+                    animateValue(statNumber, 0, target);
+                    statNumber.classList.add('visible');
+                    
+                    // Animate progress ring
+                    const ring = statNumber.parentElement.querySelector('circle');
+                    const percentage = (target > 100 ? 100 : target) / 100;
+                    const circumference = 2 * Math.PI * 58;
+                    ring.style.strokeDasharray = `${circumference * percentage} ${circumference}`;
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all stat numbers
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        // Number animation function
+        function animateValue(element, start, end) {
+            const duration = 2000;
+            const step = (end - start) * 16 / duration;
+            let current = start;
+            
+            const animate = () => {
+                current += step;
+                if (current >= end) {
+                    element.textContent = end.toLocaleString();
+                    if (end > 100) {
+                        element.textContent += '+';
+                    }
+                    if (element.closest('.stat-card').querySelector('.stat-label').textContent === 'Satisfaction Rate') {
+                        element.textContent += '%';
+                    }
+                    return;
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+                requestAnimationFrame(animate);
+            };
+            
+            animate();
+        }
+
+
+    // Initialize animations when elements come into view
+    let animatedStats = false;
+    window.addEventListener("scroll", () => {
       scrollReveal();
 
-      // Smooth scroll function
-      function scrollToContent() {
-        document.querySelector(".py-5").scrollIntoView({
-          behavior: "smooth",
-        });
+      // Animate stats when they come into view
+      const statsSection = document.querySelector(".stat-number");
+      if (statsSection && !animatedStats) {
+        const elementTop = statsSection.getBoundingClientRect().top;
+        if (elementTop < window.innerHeight) {
+          document.querySelectorAll(".stat-number").forEach(animateCounter);
+          animatedStats = true;
+        }
       }
-    </script>
+    });
 
-    <script src="navbar.js"></script>
-  </body>
+    // Initial check for elements in view
+    scrollReveal();
+
+    // Smooth scroll function
+    function scrollToContent() {
+      document.querySelector(".py-5").scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  </script>
+
+  <script src="navbar.js"></script>
+</body>
+
 </html>
